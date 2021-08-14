@@ -32,6 +32,9 @@ export default function Footer() {
         {darkMode ? <Sun size={16} /> : <Moon size={16} />}
       </ButtonSecondary>
 
+
+      
+
     </FooterFrame>
   )
 }

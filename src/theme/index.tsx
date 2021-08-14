@@ -61,11 +61,11 @@ export function colors(darkMode: boolean): Colors {
     primary1: darkMode ? '#CC963D' : '#CC963D', //choose token + all button colors
     primary2: darkMode ? '#3680E7' : '#FF8CC3',
     primary3: darkMode ? '#4D8FEA' : '#FF99C9',
-    primary4: darkMode ? '#376bad70' : '#F6DDE8',
+    primary4: darkMode ? '#7F7F7F' : '#7F7F7F', //light dark onmouse color
     primary5: darkMode ? '#CC963D' : '#CC963D', // header + MAX
 
     // color text
-    primaryText1: darkMode ? '#F7F8FA' : '#282B2F',
+    primaryText1: darkMode ? '#F7F8FA' : '#282B2F', //MAX color bg
 
     // secondary colors
     secondary1: darkMode ? '#2172E5' : '#ff007a',
@@ -95,7 +95,7 @@ export function theme(darkMode: boolean): DefaultTheme {
     },
 
     //shadows
-    shadow1: darkMode ? '#000' : '#2F80ED',
+    shadow1: darkMode ? '#000' : '#181818',
 
     // media queries
     mediaWidth: mediaWidthTemplates,
