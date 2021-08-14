@@ -102,10 +102,10 @@ const UniIcon = styled(HistoryLink)<{ to: string }>`
   }
 `
 
-const MigrateBanner = styled(AutoColumn)`
+const MigrateBanner = styled(AutoColumn)` // Baner with info header
   width: 100%;
   padding: 12px 0;
-  display: flex;
+  display: none;
   justify-content: center;
   background-color: ${({ theme }) => theme.primary5};
   color: ${({ theme }) => theme.primaryText1};
@@ -125,6 +125,7 @@ const MigrateBanner = styled(AutoColumn)`
 const VersionLabel = styled.span<{ isV2?: boolean }>`
   padding: ${({ isV2 }) => (isV2 ? '0.15rem 0.5rem 0.16rem 0.45rem' : '0.15rem 0.5rem 0.16rem 0.35rem')};
   border-radius: 14px;
+  display : none;
   background: ${({ theme, isV2 }) => (isV2 ? theme.primary1 : 'none')};
   color: ${({ theme, isV2 }) => (isV2 ? theme.white : theme.primary1)};
   font-size: 0.825rem;
