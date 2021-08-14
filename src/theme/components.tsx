@@ -25,7 +25,7 @@ export const Button = styled.button.attrs<{ warning: boolean }, { backgroundColo
   }
 
   :active {
-  background-image: url("https://pasteboard.co/KfTJVdO.png");
+  
     background-color: ${({ backgroundColor }) => darken(0.1, backgroundColor)};
   }
 
