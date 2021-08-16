@@ -38,6 +38,8 @@ import { computeSlippageAdjustedAmounts, computeTradePriceBreakdown, warningSeve
 import AppBody from '../AppBody'
 import { PriceSlippageWarningCard } from '../../components/swap/PriceSlippageWarningCard'
 import Caeser from '../../assets/images/caeser photo_black.png'
+import WhiteCaeser from '../../assets/images/1200px-Julius_Caesar_Coustou_Louvre.png'
+import { useDarkModeManager } from '../../state/user/hooks'
 
 export default function Swap({ location: { search } }: RouteComponentProps) {
   useDefaultsFromURLSearch(search)
@@ -119,6 +121,8 @@ export default function Swap({ location: { search } }: RouteComponentProps) {
 
   const { priceImpactWithoutFee, realizedLPFee } = computeTradePriceBreakdown(bestTrade)
 
+  const [darkMode, toggleDarkMode] = useDarkModeManager()
+
   function onSwap() {
     if (priceImpactWithoutFee && !confirmPriceImpactWithoutFee(priceImpactWithoutFee)) {
       return
@@ -189,7 +193,11 @@ export default function Swap({ location: { search } }: RouteComponentProps) {
     <>
       <TokenWarningCards tokens={tokens} />
       <div style={{ width: '100%', position: 'absolute', top: '100px', left: '0%' }}>
-        <img src={Caeser} style={{ width: '500px', height: 'auto' }} />
+        {darkMode ?
+          <img src={Caeser} style={{ width: '500px', height: 'auto' }} />
+          :
+          <img src={WhiteCaeser} style={{ width: '500px', height: 'auto' }} />  
+        }
       </div>
       <AppBody>
         <Wrapper id="swap-page">
