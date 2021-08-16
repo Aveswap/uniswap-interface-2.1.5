@@ -37,8 +37,8 @@ import { CursorPointer, TYPE } from '../../theme'
 import { computeSlippageAdjustedAmounts, computeTradePriceBreakdown, warningSeverity } from '../../utils/prices'
 import AppBody from '../AppBody'
 import { PriceSlippageWarningCard } from '../../components/swap/PriceSlippageWarningCard'
-import Caeser from '../../assets/images/caeser photo_black.png'
-import WhiteCaeser from '../../assets/images/1200px-Julius_Caesar_Coustou_Louvre.png'
+import Caeser from '../../assets/images/1200for_dark_mode.png'
+import WhiteCaeser from '../../assets/images/1200pxfor_light_mode.png'
 import { useDarkModeManager } from '../../state/user/hooks'
 
 export default function Swap({ location: { search } }: RouteComponentProps) {
@@ -196,7 +196,7 @@ export default function Swap({ location: { search } }: RouteComponentProps) {
         {darkMode ?
           <img src={Caeser} style={{ width: '500px', height: 'auto' }} />
           :
-          <img src={WhiteCaeser} style={{ width: '500px', height: 'auto' }} />  
+          <img src={WhiteCaeser} style={{ width: '500px', height: 'auto' }} />
         }
       </div>
       <AppBody>
