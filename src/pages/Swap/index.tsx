@@ -189,7 +189,7 @@ export default function Swap({ location: { search } }: RouteComponentProps) {
     <>
       <TokenWarningCards tokens={tokens} />
       <div style={{ width: '100%', position: 'absolute', top: '100px', left: '0%' }}>
-        <img src={Caeser} style={{ width: '300px', height: 'auto' }} />
+        <img src={Caeser} style={{ width: '500px', height: 'auto' }} />
       </div>
       <AppBody>
         <Wrapper id="swap-page">
