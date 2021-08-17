@@ -4,7 +4,7 @@ import { ArrowDown } from 'react-feather'
 import ReactGA from 'react-ga'
 import { RouteComponentProps } from 'react-router-dom'
 import { Text } from 'rebass'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { ButtonError, ButtonLight, ButtonPrimary } from '../../components/Button'
 import Card, { GreyCard } from '../../components/Card'
 import { AutoColumn } from '../../components/Column'
@@ -40,6 +40,19 @@ import { PriceSlippageWarningCard } from '../../components/swap/PriceSlippageWar
 import Caeser from '../../assets/images/1200for_dark_mode.png'
 import WhiteCaeser from '../../assets/images/1200pxfor_light_mode.png'
 import { useDarkModeManager } from '../../state/user/hooks'
+
+const ImageContainer = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0%;
+`
+
+const Image = styled.img`
+  @media (max-width: 767px) {
+      display: none
+  }
+`
 
 export default function Swap({ location: { search } }: RouteComponentProps) {
   useDefaultsFromURLSearch(search)
@@ -192,13 +205,13 @@ export default function Swap({ location: { search } }: RouteComponentProps) {
   return (
     <>
       <TokenWarningCards tokens={tokens} />
-      <div style={{ width: '100%', position: 'absolute', top: '100px', left: '0%' }}>
+      <ImageContainer>
         {darkMode ?
-          <img src={Caeser} style={{ width: '500px', height: 'auto' }} />
+          <Image src={Caeser} style={{ width: '500px', height: 'auto' }} />
           :
-          <img src={WhiteCaeser} style={{ width: '500px', height: 'auto' }} />
+          <Image src={WhiteCaeser} style={{ width: '500px', height: 'auto' }} />
         }
-      </div>
+      </ImageContainer>
       <AppBody>
         <Wrapper id="swap-page">
           <ConfirmationModal
