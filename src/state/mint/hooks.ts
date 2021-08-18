@@ -1,202 +1,215 @@
-import { useEffect, useCallback, useMemo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Token, TokenAmount, Route, JSBI, Price, Percent, Pair } from '@uniswap/sdk'
+import { t } from '@lingui/macro'
+import { useCallback, useMemo } from 'react'
+import { AppState } from '../index'
+import { Field, typeInput } from './actions'
+import { Pair } from '@uniswap/v2-sdk'
+import { Currency, Token, Percent, Price, CurrencyAmount } from '@uniswap/sdk-core'
+import JSBI from 'jsbi'
+import { PairState, useV2Pair } from '../../hooks/useV2Pairs'
+import { useTotalSupply } from '../../hooks/useTotalSupply'
 
-import { useActiveWeb3React } from '../../hooks'
-import { AppDispatch, AppState } from '../index'
-import { setDefaultsFromURLMatchParams, Field, typeInput } from './actions'
-import { useTokenByAddressAndAutomaticallyAdd } from '../../hooks/Tokens'
-import { useTokenBalancesTreatWETHAsETH } from '../wallet/hooks'
-import { usePair } from '../../data/Reserves'
-import { useTotalSupply } from '../../data/TotalSupply'
+import { useActiveWeb3React } from '../../hooks/web3'
 import { tryParseAmount } from '../swap/hooks'
+import { useCurrencyBalances } from '../wallet/hooks'
+import { useAppDispatch, useAppSelector } from 'state/hooks'
 
 const ZERO = JSBI.BigInt(0)
 
 export function useMintState(): AppState['mint'] {
-  return useSelector<AppState, AppState['mint']>(state => state.mint)
+  return useAppSelector((state) => state.mint)
 }
 
-export function useDerivedMintInfo(): {
-  dependentField: Field
-  tokens: { [field in Field]?: Token }
-  pair?: Pair | null
-  tokenBalances: { [field in Field]?: TokenAmount }
-  parsedAmounts: { [field in Field]?: TokenAmount }
-  price?: Price
-  noLiquidity?: boolean
-  liquidityMinted?: TokenAmount
-  poolTokenPercentage?: Percent
-  error?: string
+export function useMintActionHandlers(noLiquidity: boolean | undefined): {
+  onFieldAInput: (typedValue: string) => void
+  onFieldBInput: (typedValue: string) => void
 } {
-  const { account } = useActiveWeb3React()
+  const dispatch = useAppDispatch()
 
-  const {
-    independentField,
-    typedValue,
-    otherTypedValue,
-    [Field.TOKEN_A]: { address: tokenAAddress },
-    [Field.TOKEN_B]: { address: tokenBAddress }
-  } = useMintState()
-
-  const dependentField = independentField === Field.TOKEN_A ? Field.TOKEN_B : Field.TOKEN_A
-
-  // tokens
-  const tokenA = useTokenByAddressAndAutomaticallyAdd(tokenAAddress)
-  const tokenB = useTokenByAddressAndAutomaticallyAdd(tokenBAddress)
-  const tokens: { [field in Field]?: Token } = useMemo(
-    () => ({
-      [Field.TOKEN_A]: tokenA,
-      [Field.TOKEN_B]: tokenB
-    }),
-    [tokenA, tokenB]
+  const onFieldAInput = useCallback(
+    (typedValue: string) => {
+      dispatch(typeInput({ field: Field.CURRENCY_A, typedValue, noLiquidity: noLiquidity === true }))
+    },
+    [dispatch, noLiquidity]
   )
 
-  // pair
-  const pair = usePair(tokens[Field.TOKEN_A], tokens[Field.TOKEN_B])
-  const noLiquidity =
-    pair === null || (!!pair && JSBI.equal(pair.reserve0.raw, ZERO) && JSBI.equal(pair.reserve1.raw, ZERO))
-
-  // route
-  const route = useMemo(
-    () =>
-      !noLiquidity && pair && tokens[independentField] ? new Route([pair], tokens[Field.TOKEN_A] as Token) : undefined,
-    [noLiquidity, pair, tokens, independentField]
-  )
-
-  // balances
-  const relevantTokenBalances = useTokenBalancesTreatWETHAsETH(account ?? undefined, [
-    tokens[Field.TOKEN_A],
-    tokens[Field.TOKEN_B]
-  ])
-  const tokenBalances: { [field in Field]?: TokenAmount } = {
-    [Field.TOKEN_A]: relevantTokenBalances?.[tokens[Field.TOKEN_A]?.address ?? ''],
-    [Field.TOKEN_B]: relevantTokenBalances?.[tokens[Field.TOKEN_B]?.address ?? '']
-  }
-
-  // amounts
-  const independentAmount = tryParseAmount(typedValue, tokens[independentField])
-  const dependentAmount = useMemo(() => {
-    if (noLiquidity && otherTypedValue && tokens[dependentField]) {
-      return tryParseAmount(otherTypedValue, tokens[dependentField])
-    } else if (route && independentAmount) {
-      return dependentField === Field.TOKEN_B
-        ? route.midPrice.quote(independentAmount)
-        : route.midPrice.invert().quote(independentAmount)
-    } else {
-      return
-    }
-  }, [noLiquidity, otherTypedValue, tokens, dependentField, independentAmount, route])
-  const parsedAmounts = {
-    [Field.TOKEN_A]: independentField === Field.TOKEN_A ? independentAmount : dependentAmount,
-    [Field.TOKEN_B]: independentField === Field.TOKEN_A ? dependentAmount : independentAmount
-  }
-
-  const price = useMemo(() => {
-    if (
-      noLiquidity &&
-      tokens[Field.TOKEN_A] &&
-      tokens[Field.TOKEN_B] &&
-      parsedAmounts[Field.TOKEN_A] &&
-      parsedAmounts[Field.TOKEN_B]
-    ) {
-      return new Price(
-        tokens[Field.TOKEN_A] as Token,
-        tokens[Field.TOKEN_B] as Token,
-        (parsedAmounts[Field.TOKEN_A] as TokenAmount).raw,
-        (parsedAmounts[Field.TOKEN_B] as TokenAmount).raw
-      )
-    } else if (route) {
-      return route.midPrice
-    } else {
-      return
-    }
-  }, [noLiquidity, tokens, parsedAmounts, route])
-
-  // liquidity minted
-  const totalSupply = useTotalSupply(pair?.liquidityToken)
-  const liquidityMinted = useMemo(() => {
-    if (pair && totalSupply && parsedAmounts[Field.TOKEN_A] && parsedAmounts[Field.TOKEN_B]) {
-      return pair.getLiquidityMinted(
-        totalSupply,
-        parsedAmounts[Field.TOKEN_A] as TokenAmount,
-        parsedAmounts[Field.TOKEN_B] as TokenAmount
-      )
-    } else {
-      return
-    }
-  }, [pair, totalSupply, parsedAmounts])
-
-  const poolTokenPercentage = useMemo(() => {
-    if (liquidityMinted && totalSupply) {
-      return new Percent(liquidityMinted.raw, totalSupply.add(liquidityMinted).raw)
-    } else {
-      return
-    }
-  }, [liquidityMinted, totalSupply])
-
-  let error: string | undefined
-  if (!account) {
-    error = 'Connect Wallet'
-  }
-
-  if (!parsedAmounts[Field.TOKEN_A] || !parsedAmounts[Field.TOKEN_B]) {
-    error = error ?? 'Enter an amount'
-  }
-
-  if (
-    parsedAmounts[Field.TOKEN_A] &&
-    tokenBalances?.[Field.TOKEN_A]?.lessThan(parsedAmounts[Field.TOKEN_A] as TokenAmount)
-  ) {
-    error = 'Insufficient ' + tokens[Field.TOKEN_A]?.symbol + ' balance'
-  }
-
-  if (
-    parsedAmounts[Field.TOKEN_B] &&
-    tokenBalances?.[Field.TOKEN_B]?.lessThan(parsedAmounts[Field.TOKEN_B] as TokenAmount)
-  ) {
-    error = 'Insufficient ' + tokens[Field.TOKEN_B]?.symbol + ' balance'
-  }
-
-  return {
-    dependentField,
-    tokens,
-    pair,
-    tokenBalances,
-    parsedAmounts,
-    price,
-    noLiquidity,
-    liquidityMinted,
-    poolTokenPercentage,
-    error
-  }
-}
-
-export function useMintActionHandlers(): {
-  onUserInput: (field: Field, typedValue: string) => void
-} {
-  const dispatch = useDispatch<AppDispatch>()
-
-  const { noLiquidity } = useDerivedMintInfo()
-
-  const onUserInput = useCallback(
-    (field: Field, typedValue: string) => {
-      dispatch(typeInput({ field, typedValue, noLiquidity: noLiquidity === true ? true : false }))
+  const onFieldBInput = useCallback(
+    (typedValue: string) => {
+      dispatch(typeInput({ field: Field.CURRENCY_B, typedValue, noLiquidity: noLiquidity === true }))
     },
     [dispatch, noLiquidity]
   )
 
   return {
-    onUserInput
+    onFieldAInput,
+    onFieldBInput,
   }
 }
 
-// updates the mint state to use the appropriate tokens, given the route
-export function useDefaultsFromURLMatchParams(params: { [k: string]: string }) {
-  const { chainId } = useActiveWeb3React()
-  const dispatch = useDispatch<AppDispatch>()
-  useEffect(() => {
-    if (!chainId) return
-    dispatch(setDefaultsFromURLMatchParams({ chainId, params }))
-  }, [dispatch, chainId, params])
+export function useDerivedMintInfo(
+  currencyA: Currency | undefined,
+  currencyB: Currency | undefined
+): {
+  dependentField: Field
+  currencies: { [field in Field]?: Currency }
+  pair?: Pair | null
+  pairState: PairState
+  currencyBalances: { [field in Field]?: CurrencyAmount<Currency> }
+  parsedAmounts: { [field in Field]?: CurrencyAmount<Currency> }
+  price?: Price<Currency, Currency>
+  noLiquidity?: boolean
+  liquidityMinted?: CurrencyAmount<Token>
+  poolTokenPercentage?: Percent
+  error?: string
+} {
+  const { account } = useActiveWeb3React()
+
+  const { independentField, typedValue, otherTypedValue } = useMintState()
+
+  const dependentField = independentField === Field.CURRENCY_A ? Field.CURRENCY_B : Field.CURRENCY_A
+
+  // tokens
+  const currencies: { [field in Field]?: Currency } = useMemo(
+    () => ({
+      [Field.CURRENCY_A]: currencyA ?? undefined,
+      [Field.CURRENCY_B]: currencyB ?? undefined,
+    }),
+    [currencyA, currencyB]
+  )
+
+  // pair
+  const [pairState, pair] = useV2Pair(currencies[Field.CURRENCY_A], currencies[Field.CURRENCY_B])
+  const totalSupply = useTotalSupply(pair?.liquidityToken)
+
+  const noLiquidity: boolean =
+    pairState === PairState.NOT_EXISTS ||
+    Boolean(totalSupply && JSBI.equal(totalSupply.quotient, ZERO)) ||
+    Boolean(
+      pairState === PairState.EXISTS &&
+        pair &&
+        JSBI.equal(pair.reserve0.quotient, ZERO) &&
+        JSBI.equal(pair.reserve1.quotient, ZERO)
+    )
+
+  // balances
+  const balances = useCurrencyBalances(account ?? undefined, [
+    currencies[Field.CURRENCY_A],
+    currencies[Field.CURRENCY_B],
+  ])
+  const currencyBalances: { [field in Field]?: CurrencyAmount<Currency> } = {
+    [Field.CURRENCY_A]: balances[0],
+    [Field.CURRENCY_B]: balances[1],
+  }
+
+  // amounts
+  const independentAmount: CurrencyAmount<Currency> | undefined = tryParseAmount(
+    typedValue,
+    currencies[independentField]
+  )
+  const dependentAmount: CurrencyAmount<Currency> | undefined = useMemo(() => {
+    if (noLiquidity) {
+      if (otherTypedValue && currencies[dependentField]) {
+        return tryParseAmount(otherTypedValue, currencies[dependentField])
+      }
+      return undefined
+    } else if (independentAmount) {
+      // we wrap the currencies just to get the price in terms of the other token
+      const wrappedIndependentAmount = independentAmount?.wrapped
+      const [tokenA, tokenB] = [currencyA?.wrapped, currencyB?.wrapped]
+      if (tokenA && tokenB && wrappedIndependentAmount && pair) {
+        const dependentCurrency = dependentField === Field.CURRENCY_B ? currencyB : currencyA
+        const dependentTokenAmount =
+          dependentField === Field.CURRENCY_B
+            ? pair.priceOf(tokenA).quote(wrappedIndependentAmount)
+            : pair.priceOf(tokenB).quote(wrappedIndependentAmount)
+        return dependentCurrency?.isNative
+          ? CurrencyAmount.fromRawAmount(dependentCurrency, dependentTokenAmount.quotient)
+          : dependentTokenAmount
+      }
+      return undefined
+    } else {
+      return undefined
+    }
+  }, [noLiquidity, otherTypedValue, currencies, dependentField, independentAmount, currencyA, currencyB, pair])
+
+  const parsedAmounts: { [field in Field]: CurrencyAmount<Currency> | undefined } = useMemo(() => {
+    return {
+      [Field.CURRENCY_A]: independentField === Field.CURRENCY_A ? independentAmount : dependentAmount,
+      [Field.CURRENCY_B]: independentField === Field.CURRENCY_A ? dependentAmount : independentAmount,
+    }
+  }, [dependentAmount, independentAmount, independentField])
+
+  const price = useMemo(() => {
+    if (noLiquidity) {
+      const { [Field.CURRENCY_A]: currencyAAmount, [Field.CURRENCY_B]: currencyBAmount } = parsedAmounts
+      if (currencyAAmount?.greaterThan(0) && currencyBAmount?.greaterThan(0)) {
+        const value = currencyBAmount.divide(currencyAAmount)
+        return new Price(currencyAAmount.currency, currencyBAmount.currency, value.denominator, value.numerator)
+      }
+      return undefined
+    } else {
+      const wrappedCurrencyA = currencyA?.wrapped
+      return pair && wrappedCurrencyA ? pair.priceOf(wrappedCurrencyA) : undefined
+    }
+  }, [currencyA, noLiquidity, pair, parsedAmounts])
+
+  // liquidity minted
+  const liquidityMinted = useMemo(() => {
+    const { [Field.CURRENCY_A]: currencyAAmount, [Field.CURRENCY_B]: currencyBAmount } = parsedAmounts
+    const [tokenAmountA, tokenAmountB] = [currencyAAmount?.wrapped, currencyBAmount?.wrapped]
+    if (pair && totalSupply && tokenAmountA && tokenAmountB) {
+      try {
+        return pair.getLiquidityMinted(totalSupply, tokenAmountA, tokenAmountB)
+      } catch (error) {
+        console.error(error)
+        return undefined
+      }
+    } else {
+      return undefined
+    }
+  }, [parsedAmounts, pair, totalSupply])
+
+  const poolTokenPercentage = useMemo(() => {
+    if (liquidityMinted && totalSupply) {
+      return new Percent(liquidityMinted.quotient, totalSupply.add(liquidityMinted).quotient)
+    } else {
+      return undefined
+    }
+  }, [liquidityMinted, totalSupply])
+
+  let error: string | undefined
+  if (!account) {
+    error = t`Connect Wallet`
+  }
+
+  if (pairState === PairState.INVALID) {
+    error = error ?? t`Invalid pair`
+  }
+
+  if (!parsedAmounts[Field.CURRENCY_A] || !parsedAmounts[Field.CURRENCY_B]) {
+    error = error ?? t`Enter an amount`
+  }
+
+  const { [Field.CURRENCY_A]: currencyAAmount, [Field.CURRENCY_B]: currencyBAmount } = parsedAmounts
+
+  if (currencyAAmount && currencyBalances?.[Field.CURRENCY_A]?.lessThan(currencyAAmount)) {
+    error = t`Insufficient ${currencies[Field.CURRENCY_A]?.symbol} balance`
+  }
+
+  if (currencyBAmount && currencyBalances?.[Field.CURRENCY_B]?.lessThan(currencyBAmount)) {
+    error = t`Insufficient ${currencies[Field.CURRENCY_B]?.symbol} balance`
+  }
+
+  return {
+    dependentField,
+    currencies,
+    pair,
+    pairState,
+    currencyBalances,
+    parsedAmounts,
+    price,
+    noLiquidity,
+    liquidityMinted,
+    poolTokenPercentage,
+    error,
+  }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { ExternalLink } from '../../theme'
 
 const InfoCard = styled.button<{ active?: boolean }>`
@@ -15,7 +15,7 @@ const InfoCard = styled.button<{ active?: boolean }>`
   border-color: ${({ theme, active }) => (active ? 'transparent' : theme.bg3)};
 `
 
-const OptionCard = styled(InfoCard)`
+const OptionCard = styled(InfoCard as any)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -30,7 +30,7 @@ const OptionCardLeft = styled.div`
   height: 100%;
 `
 
-const OptionCardClickable = styled(OptionCard)<{ clickable?: boolean }>`
+const OptionCardClickable = styled(OptionCard as any)<{ clickable?: boolean }>`
   margin-top: 0;
   &:hover {
     cursor: ${({ clickable }) => (clickable ? 'pointer' : '')};
@@ -62,7 +62,7 @@ const CircleWrapper = styled.div`
 
 const HeaderText = styled.div`
   ${({ theme }) => theme.flexRowNoWrap};
-  color: ${props => (props.color === 'blue' ? ({ theme }) => theme.primary1 : ({ theme }) => theme.text1)};
+  color: ${(props) => (props.color === 'blue' ? ({ theme }) => theme.primary1 : ({ theme }) => theme.text1)};
   font-size: 1rem;
   font-weight: 500;
 `
@@ -73,7 +73,7 @@ const SubHeader = styled.div`
   font-size: 12px;
 `
 
-const IconWrapper = styled.div<{ size?: number }>`
+const IconWrapper = styled.div<{ size?: number | null }>`
   ${({ theme }) => theme.flexColumnNoWrap};
   align-items: center;
   justify-content: center;
@@ -90,14 +90,14 @@ const IconWrapper = styled.div<{ size?: number }>`
 export default function Option({
   link = null,
   clickable = true,
-  size = null,
+  size,
   onClick = null,
   color,
   header,
   subheader = null,
   icon,
   active = false,
-  id
+  id,
 }: {
   link?: string | null
   clickable?: boolean
@@ -114,7 +114,6 @@ export default function Option({
     <OptionCardClickable id={id} onClick={onClick} clickable={clickable && !active} active={active}>
       <OptionCardLeft>
         <HeaderText color={color}>
-          {' '}
           {active ? (
             <CircleWrapper>
               <GreenCircle>

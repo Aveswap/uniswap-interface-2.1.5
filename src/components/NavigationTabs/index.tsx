@@ -1,49 +1,37 @@
-import React, { useCallback } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { darken } from 'polished'
-import { useTranslation } from 'react-i18next'
-import { withRouter, NavLink, Link as HistoryLink, RouteComponentProps } from 'react-router-dom'
-import useBodyKeyDown from '../../hooks/useBodyKeyDown'
+import { Trans } from '@lingui/macro'
+import { NavLink, Link as HistoryLink, useLocation } from 'react-router-dom'
+import { Percent } from '@uniswap/sdk-core'
 
-import { CursorPointer } from '../../theme'
 import { ArrowLeft } from 'react-feather'
-import { RowBetween } from '../Row'
-import QuestionHelper from '../QuestionHelper'
+import Row, { RowBetween } from '../Row'
+import SettingsTab from '../Settings'
 
-const tabOrder = [
-  {
-    path: '/swap',
-    textKey: 'swap',
-    regex: /\/swap/
-  },
-  {
-    path: '/send',
-    textKey: 'send',
-    regex: /\/send/
-  },
-  {
-    path: '/pool',
-    textKey: 'pool',
-    regex: /\/pool/
-  }
-]
+import { useAppDispatch } from 'state/hooks'
+import { resetMintState } from 'state/mint/actions'
+import { resetMintState as resetMintV3State } from 'state/mint/v3/actions'
+import { TYPE } from 'theme'
+import useTheme from 'hooks/useTheme'
+import { ReactNode } from 'react'
+import { Box } from 'rebass'
 
 const Tabs = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
   border-radius: 3rem;
+  justify-content: space-evenly;
 `
 
 const activeClassName = 'ACTIVE'
 
 const StyledNavLink = styled(NavLink).attrs({
-  activeClassName
+  activeClassName,
 })`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
   justify-content: center;
   height: 3rem;
-  flex: 1 0 auto;
   border-radius: 3rem;
   outline: none;
   cursor: pointer;
@@ -63,94 +51,121 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
+const StyledHistoryLink = styled(HistoryLink)<{ flex: string | undefined }>`
+  flex: ${({ flex }) => flex ?? 'none'};
+
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    flex: none;
+    margin-right: 10px;
+  `};
+`
+
 const ActiveText = styled.div`
   font-weight: 500;
   font-size: 20px;
 `
 
-const ArrowLink = styled(ArrowLeft)`
+const StyledArrowLeft = styled(ArrowLeft)`
   color: ${({ theme }) => theme.text1};
 `
 
-function NavigationTabs({ location: { pathname }, history }: RouteComponentProps<{}>) {
-  const { t } = useTranslation()
-
-  const navigate = useCallback(
-    direction => {
-      const tabIndex = tabOrder.findIndex(({ regex }) => pathname.match(regex))
-      history.push(tabOrder[(tabIndex + tabOrder.length + direction) % tabOrder.length].path)
-    },
-    [pathname, history]
-  )
-  const navigateRight = useCallback(() => {
-    navigate(1)
-  }, [navigate])
-  const navigateLeft = useCallback(() => {
-    navigate(-1)
-  }, [navigate])
-
-  useBodyKeyDown('ArrowRight', navigateRight)
-  useBodyKeyDown('ArrowLeft', navigateLeft)
-
-  const adding = pathname.match('/add')
-  const removing = pathname.match('/remove')
-  const finding = pathname.match('/find')
-  const creating = pathname.match('/create')
-
+export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
   return (
-    <>
-      {adding || removing ? (
-        <Tabs>
-          <RowBetween style={{ padding: '1rem' }}>
-            <CursorPointer onClick={() => history.push('/pool')}>
-              <ArrowLink />
-            </CursorPointer>
-            <ActiveText>{adding ? 'Add' : 'Remove'} Liquidity</ActiveText>
-            <QuestionHelper
-              text={
-                adding
-                  ? 'When you add liquidity, you are given pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time.'
-                  : 'Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive.'
-              }
-            />
-          </RowBetween>
-        </Tabs>
-      ) : finding ? (
-        <Tabs>
-          <RowBetween style={{ padding: '1rem' }}>
-            <HistoryLink to="/pool">
-              <ArrowLink />
-            </HistoryLink>
-            <ActiveText>Import Pool</ActiveText>
-            <QuestionHelper text={"Use this tool to find pairs that don't automatically appear in the interface."} />
-          </RowBetween>
-        </Tabs>
-      ) : creating ? (
-        <Tabs>
-          <RowBetween style={{ padding: '1rem' }}>
-            <HistoryLink to="/pool">
-              <ArrowLink />
-            </HistoryLink>
-            <ActiveText>Create Pool</ActiveText>
-            <QuestionHelper text={'Use this interface to create a new pool.'} />
-          </RowBetween>
-        </Tabs>
-      ) : (
-        <Tabs style={{ marginBottom: '20px' }}>
-          {tabOrder.map(({ path, textKey, regex }) => (
-            <StyledNavLink
-              id={`${textKey}-nav-link`}
-              key={path}
-              to={path}
-              isActive={(_, { pathname }) => !!pathname.match(regex)}
-            >
-              {t(textKey)}
-            </StyledNavLink>
-          ))}
-        </Tabs>
-      )}
-    </>
+    <Tabs style={{ marginBottom: '20px', display: 'none', padding: '1rem 1rem 0 1rem' }}>
+      <StyledNavLink id={`swap-nav-link`} to={'/swap'} isActive={() => active === 'swap'}>
+        <Trans>Swap</Trans>
+      </StyledNavLink>
+      <StyledNavLink id={`pool-nav-link`} to={'/pool'} isActive={() => active === 'pool'}>
+        <Trans>Pool</Trans>
+      </StyledNavLink>
+    </Tabs>
   )
 }
 
-export default withRouter(NavigationTabs)
+export function FindPoolTabs({ origin }: { origin: string }) {
+  return (
+    <Tabs>
+      <RowBetween style={{ padding: '1rem 1rem 0 1rem', position: 'relative' }}>
+        <HistoryLink to={origin}>
+          <StyledArrowLeft />
+        </HistoryLink>
+        <ActiveText style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
+          <Trans>Import V2 Pool</Trans>
+        </ActiveText>
+      </RowBetween>
+    </Tabs>
+  )
+}
+
+export function AddRemoveTabs({
+  adding,
+  creating,
+  defaultSlippage,
+  positionID,
+  children,
+}: {
+  adding: boolean
+  creating: boolean
+  defaultSlippage: Percent
+  positionID?: string | undefined
+  showBackLink?: boolean
+  children?: ReactNode | undefined
+}) {
+  const theme = useTheme()
+  // reset states on back
+  const dispatch = useAppDispatch()
+  const location = useLocation()
+
+  // detect if back should redirect to v3 or v2 pool page
+  const poolLink = location.pathname.includes('add/v2')
+    ? '/pool/v2'
+    : '/pool' + (!!positionID ? `/${positionID.toString()}` : '')
+
+  return (
+    <Tabs>
+      <RowBetween style={{ padding: '1rem 1rem 0 1rem' }}>
+        <StyledHistoryLink
+          to={poolLink}
+          onClick={() => {
+            if (adding) {
+              // not 100% sure both of these are needed
+              dispatch(resetMintState())
+              dispatch(resetMintV3State())
+            }
+          }}
+          flex={children ? '1' : undefined}
+        >
+          <StyledArrowLeft stroke={theme.text2} />
+        </StyledHistoryLink>
+        <TYPE.mediumHeader
+          fontWeight={500}
+          fontSize={20}
+          style={{ flex: '1', margin: 'auto', textAlign: children ? 'start' : 'center' }}
+        >
+          {creating ? (
+            <Trans>Create a pair</Trans>
+          ) : adding ? (
+            <Trans>Add Liquidity</Trans>
+          ) : (
+            <Trans>Remove Liquidity</Trans>
+          )}
+        </TYPE.mediumHeader>
+        <Box style={{ marginRight: '.5rem' }}>{children}</Box>
+        <SettingsTab placeholderSlippage={defaultSlippage} />
+      </RowBetween>
+    </Tabs>
+  )
+}
+
+export function CreateProposalTabs() {
+  return (
+    <Tabs>
+      <Row style={{ padding: '1rem 1rem 0 1rem' }}>
+        <HistoryLink to="/vote">
+          <StyledArrowLeft />
+        </HistoryLink>
+        <ActiveText style={{ marginLeft: 'auto', marginRight: 'auto' }}>Create Proposal</ActiveText>
+      </Row>
+    </Tabs>
+  )
+}
