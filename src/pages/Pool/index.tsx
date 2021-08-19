@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Trans } from '@lingui/macro'
 import { ButtonGray, ButtonOutlined, ButtonPrimary } from 'components/Button'
 import { AutoColumn } from 'components/Column'
@@ -22,6 +23,33 @@ import { LoadingRows } from './styleds'
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 870px;
+=======
+import React, { useState, useContext } from 'react'
+import styled, { ThemeContext } from 'styled-components'
+import { JSBI, Pair } from '@uniswap/sdk'
+import { RouteComponentProps } from 'react-router-dom'
+
+import Question from '../../components/QuestionHelper'
+import SearchModal from '../../components/SearchModal'
+import PositionCard from '../../components/PositionCard'
+import { useUserHasLiquidityInAllTokens } from '../../data/V1'
+import { useTokenBalances } from '../../state/wallet/hooks'
+import { StyledInternalLink, TYPE } from '../../theme'
+import { Text } from 'rebass'
+import { LightCard } from '../../components/Card'
+import { RowBetween } from '../../components/Row'
+import { ButtonPrimary, ButtonSecondary } from '../../components/Button'
+import { AutoColumn, ColumnCenter } from '../../components/Column'
+
+import { useActiveWeb3React } from '../../hooks'
+import { usePair } from '../../data/Reserves'
+import { useAllDummyPairs } from '../../state/user/hooks'
+import AppBody from '../AppBody'
+
+
+const Positions = styled.div`
+  position: relative;
+>>>>>>> main
   width: 100%;
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
@@ -190,6 +218,7 @@ export default function Pool() {
   ]
 
   return (
+<<<<<<< HEAD
     <>
       <PageWrapper>
         <SwapPoolTabs active={'pool'} />
@@ -242,6 +271,51 @@ export default function Pool() {
                 </LoadingRows>
               ) : filteredPositions && filteredPositions.length > 0 ? (
                 <PositionList positions={filteredPositions} />
+=======
+
+    <AppBody>
+
+      <AutoColumn gap="lg" justify="center">
+        <ButtonPrimary
+          id="join-pool-button"
+          padding="16px"
+          onClick={() => {
+            setShowPoolSearch(true)
+          }}
+
+        >
+          <Text fontWeight={500} fontSize={20}>
+            Join {filteredExchangeList?.length > 0 ? 'another' : 'a'} pool
+          </Text>
+        </ButtonPrimary>
+        <Positions>
+          <AutoColumn gap="12px">
+            <RowBetween padding={'0 8px'}>
+              <Text color={theme.text1} fontWeight={500}>
+                Your Pooled Liquidity
+              </Text>
+              <Question text="When you add liquidity, you are given pool tokens that represent your share. If you don’t see a pool you joined in this list, try importing a pool below." />
+            </RowBetween>
+            {filteredExchangeList?.length === 0 && (
+              <LightCard
+                padding="40px
+          "
+              >
+                <TYPE.body color={theme.text3} textAlign="center">
+                  No liquidity found.
+                </TYPE.body>
+              </LightCard>
+            )}
+            {filteredExchangeList}
+            <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
+              {!hasV1Liquidity ? (
+                <>
+                  {filteredExchangeList?.length !== 0 ? `Don't see a pool you joined? ` : 'Already joined a pool? '}{' '}
+                  <StyledInternalLink id="import-pool-link" to="/find">
+                    Import it.
+                  </StyledInternalLink>
+                </>
+>>>>>>> main
               ) : (
                 <NoLiquidity>
                   <TYPE.body color={theme.text3} textAlign="center">
@@ -314,9 +388,24 @@ export default function Pool() {
               ) : null}
             </ResponsiveRow>
           </AutoColumn>
+<<<<<<< HEAD
         </AutoColumn>
       </PageWrapper>
       <SwitchLocaleLink />
     </>
+=======
+          <FixedBottom>
+            <ColumnCenter>
+              <ButtonSecondary width="136px" padding="8px" borderRadius="10px" onClick={() => history.push('/create')}>
+                + Create Pool
+              </ButtonSecondary>
+            </ColumnCenter>
+          </FixedBottom>
+        </Positions>
+        <SearchModal isOpen={showPoolSearch} onDismiss={() => setShowPoolSearch(false)} />
+      </AutoColumn>
+
+    </AppBody>
+>>>>>>> main
   )
 }
