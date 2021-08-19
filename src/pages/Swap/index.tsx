@@ -57,6 +57,22 @@ import { isTradeBetter } from '../../utils/isTradeBetter'
 import { maxAmountSpend } from '../../utils/maxAmountSpend'
 import { warningSeverity } from '../../utils/prices'
 import AppBody from '../AppBody'
+import Caeser from '../../assets/images/1200for_dark_mode.png'
+import WhiteCaeser from '../../assets/images/1200pxfor_light_mode.png'
+import { useDarkModeManager } from '../../state/user/hooks'
+
+const ImageContainer = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  left: 0%;
+`
+
+const Image = styled.img`
+  @media (max-width: 767px) {
+      display: none
+  }
+`
 
 const StyledInfo = styled(Info)`
   opacity: 0.4;
@@ -349,6 +365,8 @@ export default function Swap({ history }: RouteComponentProps) {
 
   const priceImpactTooHigh = priceImpactSeverity > 3 && !isExpertMode
 
+  const [darkMode, toggleDarkMode] = useDarkModeManager()
+
   return (
     <>
       <TokenWarningModal
@@ -358,6 +376,13 @@ export default function Swap({ history }: RouteComponentProps) {
         onDismiss={handleDismissTokenWarning}
       />
       <NetworkAlert />
+      <ImageContainer>
+        {darkMode ?
+          <Image src={Caeser} style={{ width: '500px', height: 'auto', overflow: 'hidden' }} />
+          :
+          <Image src={WhiteCaeser} style={{ width: '500px', height: 'auto', overflow: 'hidden' }} />
+        }
+      </ImageContainer>
       <AppBody>
         <SwapHeader allowedSlippage={allowedSlippage} />
         <Wrapper id="swap-page">
