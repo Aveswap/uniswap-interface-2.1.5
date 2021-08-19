@@ -20,6 +20,7 @@ import { usePair } from '../../data/Reserves'
 import { useAllDummyPairs } from '../../state/user/hooks'
 import AppBody from '../AppBody'
 
+
 const Positions = styled.div`
   position: relative;
   width: 100%;
@@ -62,7 +63,9 @@ export default function Pool({ history }: RouteComponentProps) {
   const hasV1Liquidity = useUserHasLiquidityInAllTokens()
 
   return (
+
     <AppBody>
+
       <AutoColumn gap="lg" justify="center">
         <ButtonPrimary
           id="join-pool-button"
@@ -70,6 +73,7 @@ export default function Pool({ history }: RouteComponentProps) {
           onClick={() => {
             setShowPoolSearch(true)
           }}
+
         >
           <Text fontWeight={500} fontSize={20}>
             Join {filteredExchangeList?.length > 0 ? 'another' : 'a'} pool
@@ -119,6 +123,7 @@ export default function Pool({ history }: RouteComponentProps) {
         </Positions>
         <SearchModal isOpen={showPoolSearch} onDismiss={() => setShowPoolSearch(false)} />
       </AutoColumn>
+
     </AppBody>
   )
 }

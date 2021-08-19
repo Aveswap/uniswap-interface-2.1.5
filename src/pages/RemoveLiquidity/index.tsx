@@ -96,7 +96,7 @@ export default function RemoveLiquidity({ match: { params } }: RouteComponentPro
       { name: 'verifyingContract', type: 'address' }
     ]
     const domain = {
-      name: 'Cyberswap V2',
+      name: 'Aveswap V2',
       version: '1',
       chainId: chainId,
       verifyingContract: pair.liquidityToken.address

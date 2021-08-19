@@ -56,7 +56,7 @@ const BackgroundGradient = styled.div`
   position: absolute;
   top: 0px;
   left: 0px;
-  opacity: 0.01; // center gradient
+  opacity: 0.03; // center gradient
   z-index: -1;
 
   transform: translateY(-70vh);
