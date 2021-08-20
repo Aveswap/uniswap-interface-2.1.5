@@ -6,17 +6,23 @@
 
 import { JsonRpcProvider } from '@ethersproject/providers'
 import { Wallet } from '@ethersproject/wallet'
-import { _Eip1193Bridge } from '@ethersproject/experimental/lib/eip1193-bridge'
+import { Eip1193Bridge } from '@ethersproject/experimental/lib/eip1193-bridge'
 
-// never send real ether to this, obviously
-const PRIVATE_KEY_TEST_NEVER_USE = '0xad20c82497421e9784f18460ad2fe84f73569068e98e270b3e63743268af5763'
+// todo: figure out how env vars actually work in CI
+// const TEST_PRIVATE_KEY = Cypress.env('INTEGRATION_TEST_PRIVATE_KEY')
+const TEST_PRIVATE_KEY = '0xe580410d7c37d26c6ad1a837bbae46bc27f9066a466fb3a66e770523b4666d19'
 
 // address of the above key
-export const TEST_ADDRESS_NEVER_USE = '0x0fF2D1eFd7A57B7562b2bf27F3f37899dB27F4a5'
+export const TEST_ADDRESS_NEVER_USE = new Wallet(TEST_PRIVATE_KEY).address
 
-export const TEST_ADDRESS_NEVER_USE_SHORTENED = '0x0fF2...F4a5'
+export const TEST_ADDRESS_NEVER_USE_SHORTENED = `${TEST_ADDRESS_NEVER_USE.substr(
+  0,
+  6
+)}...${TEST_ADDRESS_NEVER_USE.substr(-4, 4)}`
 
-class CustomizedBridge extends _Eip1193Bridge {
+class CustomizedBridge extends Eip1193Bridge {
+  chainId = 4
+
   async sendAsync(...args) {
     console.debug('sendAsync called', ...args)
     return this.send(...args)
@@ -69,13 +75,14 @@ class CustomizedBridge extends _Eip1193Bridge {
 
 // sets up the injected provider to be a mock ethereum provider with the given mnemonic/index
 Cypress.Commands.overwrite('visit', (original, url, options) => {
-  return original(url, {
+  return original(url.startsWith('/') && url.length > 2 && !url.startsWith('/#') ? `/#${url}` : url, {
     ...options,
     onBeforeLoad(win) {
       options && options.onBeforeLoad && options.onBeforeLoad(win)
-      const provider = new JsonRpcProvider('https://rinkeby.infura.io/v3/acb7e55995d04c49bfb52b7141599467', 4)
-      const signer = new Wallet(PRIVATE_KEY_TEST_NEVER_USE, provider)
+      win.localStorage.clear()
+      const provider = new JsonRpcProvider('https://rinkeby.infura.io/v3/4bf032f2d38a4ed6bb975b80d6340847', 4)
+      const signer = new Wallet(TEST_PRIVATE_KEY, provider)
       win.ethereum = new CustomizedBridge(signer, provider)
-    }
+    },
   })
 })

@@ -1,12 +1,11 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
-import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
+import { SUPPORTED_WALLETS } from '../../constants/wallet'
 import Option from './Option'
-import { SUPPORTED_WALLETS } from '../../constants'
-import WalletConnectData from './WalletConnectData'
-import { walletconnect, injected } from '../../connectors'
+import { injected } from '../../connectors'
 import { darken } from 'polished'
 import Loader from '../Loader'
+import { Trans } from '@lingui/macro'
 
 const PendingSection = styled.div`
   ${({ theme }) => theme.flexColumnNoWrap};
@@ -65,48 +64,45 @@ const LoadingWrapper = styled.div`
 `
 
 export default function PendingView({
-  uri = '',
-  size,
   connector,
   error = false,
   setPendingError,
-  tryActivation
+  tryActivation,
 }: {
-  uri?: string
-  size?: number
   connector?: AbstractConnector
   error?: boolean
   setPendingError: (error: boolean) => void
   tryActivation: (connector: AbstractConnector) => void
 }) {
-  const isMetamask = window.ethereum && window.ethereum.isMetaMask
+  const isMetamask = window?.ethereum?.isMetaMask
 
   return (
     <PendingSection>
-      {!error && connector === walletconnect && <WalletConnectData size={size} uri={uri} />}
       <LoadingMessage error={error}>
         <LoadingWrapper>
-          {!error && <StyledLoader />}
           {error ? (
             <ErrorGroup>
-              <div>Error connecting.</div>
+              <div>
+                <Trans>Error connecting</Trans>
+              </div>
               <ErrorButton
                 onClick={() => {
                   setPendingError(false)
-                  tryActivation(connector)
+                  connector && tryActivation(connector)
                 }}
               >
-                Try Again
+                <Trans>Try Again</Trans>
               </ErrorButton>
             </ErrorGroup>
-          ) : connector === walletconnect ? (
-            'Scan QR code with a compatible wallet...'
           ) : (
-            'Initializing...'
+            <>
+              <StyledLoader />
+              <Trans>Initializing...</Trans>
+            </>
           )}
         </LoadingWrapper>
       </LoadingMessage>
-      {Object.keys(SUPPORTED_WALLETS).map(key => {
+      {Object.keys(SUPPORTED_WALLETS).map((key) => {
         const option = SUPPORTED_WALLETS[key]
         if (option.connector === connector) {
           if (option.connector === injected) {
@@ -125,7 +121,7 @@ export default function PendingView({
               color={option.color}
               header={option.name}
               subheader={option.description}
-              icon={require('../../assets/images/' + option.iconName)}
+              icon={option.iconURL}
             />
           )
         }
