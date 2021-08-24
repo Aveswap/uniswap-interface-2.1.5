@@ -136,7 +136,8 @@
     "start": "yarn compile-contract-types && react-scripts start",
     "test": "react-scripts test --env=./custom-test-env.js",
     "prei18n:extract": "touch src/locales/en-US.po",
-    "prestart": "yarn graphql:generate && yarn prei18n:extract"
+    "prestart": "yarn graphql:generate && yarn prei18n:extract",
+    "updateaddresses": "node ./update-addresses.js"
   },
   "eslintConfig": {
     "extends": "react-app",
