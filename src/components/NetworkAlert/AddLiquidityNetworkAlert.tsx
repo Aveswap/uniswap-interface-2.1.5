@@ -117,9 +117,9 @@ export function AddLiquidityNetworkAlert() {
     <Wrapper darkMode={darkMode} chainId={chainId} logoUrl={info.logoUrl}>
       <L2Icon src={info.logoUrl} />
       <Body>
-        <Trans>This is an alpha release of Uniswap on the {info.label} network.</Trans>
+        <Trans>This is an alpha release of Aveswap on the {info.label} network.</Trans>
         <DesktopTextBreak /> <Trans>You must bridge L1 assets to the network to use them.</Trans>{' '}
-        <ReadMoreLink href="https://help.uniswap.org/en/articles/5392809-how-to-deposit-tokens-to-optimism">
+        <ReadMoreLink href="https://help.aveswap.io/en/articles/5392809-how-to-deposit-tokens-to-optimism">
           <Trans>Read more</Trans>
         </ReadMoreLink>
       </Body>

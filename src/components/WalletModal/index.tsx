@@ -347,9 +347,9 @@ export default function WalletModal({
               <TYPE.main fontSize={14}>
                 <Trans>
                   By connecting a wallet, you agree to Uniswap Labs’{' '}
-                  <ExternalLink href="https://uniswap.org/terms-of-service/">Terms of Service</ExternalLink> and
+                  <ExternalLink href="https://aveswap.io/terms-of-service/">Terms of Service</ExternalLink> and
                   acknowledge that you have read and understand the{' '}
-                  <ExternalLink href="https://uniswap.org/disclaimer/">Uniswap protocol disclaimer</ExternalLink>.
+                  <ExternalLink href="https://aveswap.io/disclaimer/">Uniswap protocol disclaimer</ExternalLink>.
                 </Trans>
               </TYPE.main>
             </AutoRow>

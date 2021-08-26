@@ -130,7 +130,7 @@ export default function CTACards() {
     <div>
       <MinimalNetworkAlert />
       <CTASection>
-        <CTA1 href={'https://help.uniswap.org/en/articles/5391541-providing-liquidity-on-uniswap-v3'}>
+        <CTA1 href={'https://help.aveswap.io/en/articles/5391541-providing-liquidity-on-uniswap-v3'}>
           <ResponsiveColumn>
             <HeaderText>
               <Trans>Learn about providing liquidity</Trans> ↗

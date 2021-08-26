@@ -154,7 +154,7 @@ export default function ClaimModal() {
                 As a member of the Uniswap community you may claim UNI to be used for voting and governance.
                 <br />
                 <br />
-                <ExternalLink href="https://uniswap.org/blog/uni">Read more about UNI</ExternalLink>
+                <ExternalLink href="https://aveswap.io/blog/uni">Read more about UNI</ExternalLink>
               </Trans>
             </TYPE.subHeader>
             <ButtonPrimary

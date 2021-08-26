@@ -154,7 +154,7 @@ export function NetworkAlert() {
             This is an alpha release of Uniswap on the {info.label} network. You must bridge L1 assets to the network to
             swap them.
           </Trans>{' '}
-          <ReadMoreLink href="https://help.uniswap.org/en/articles/5392809-how-to-deposit-tokens-to-optimism">
+          <ReadMoreLink href="https://help.aveswap.io/en/articles/5392809-how-to-deposit-tokens-to-optimism">
             <Trans>Read more</Trans>
           </ReadMoreLink>
         </Body>

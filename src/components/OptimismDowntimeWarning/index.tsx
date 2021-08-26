@@ -53,7 +53,7 @@ export default function OptimismDowntimeWarning() {
         <Trans>
           Optimism expects planned downtime in the near future. Unplanned downtime may also occur. While the network is
           down, fees will not be generated and you will be unable to remove liquidity.{' '}
-          <ReadMoreLink href="https://help.uniswap.org/en/articles/5406082-what-happens-if-the-optimistic-ethereum-network-experiences-downtime">
+          <ReadMoreLink href="https://help.aveswap.io/en/articles/5406082-what-happens-if-the-optimistic-ethereum-network-experiences-downtime">
             Read more.
           </ReadMoreLink>
         </Trans>

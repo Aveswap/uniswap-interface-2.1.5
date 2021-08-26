@@ -2,7 +2,7 @@ import { TransactionResponse } from '@ethersproject/providers'
 import { t } from '@lingui/macro'
 import { abi as GOV_ABI } from '@uniswap/governance/build/GovernorAlpha.json'
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
-import { UNISWAP_GRANTS_PROPOSAL_DESCRIPTION } from 'constants/proposals/uniswap_grants_proposal_description'
+import { AVESWAP_GRANTS_PROPOSAL_DESCRIPTION } from 'constants/proposals/aveswap_grants_proposal_description'
 import { Contract } from 'ethers'
 import { defaultAbiCoder, formatUnits, Interface, isAddress } from 'ethers/lib/utils'
 import {
@@ -160,7 +160,7 @@ export function useAllProposalData(): { data: ProposalData[]; loading: boolean }
         let description = formattedLogs[i]?.description
         const startBlock = parseInt(proposal?.result?.startBlock?.toString())
         if (startBlock === UNISWAP_GRANTS_START_BLOCK) {
-          description = UNISWAP_GRANTS_PROPOSAL_DESCRIPTION
+          description = AVESWAP_GRANTS_PROPOSAL_DESCRIPTION
         }
         return {
           id: proposal?.result?.id.toString(),

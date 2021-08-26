@@ -148,7 +148,7 @@ export default function Vote() {
                 </RowBetween>
                 <ExternalLink
                   style={{ color: 'white', textDecoration: 'underline' }}
-                  href="https://uniswap.org/blog/uni"
+                  href="https://aveswap.io/blog/uni"
                   target="_blank"
                 >
                   <TYPE.white fontSize={14}>
