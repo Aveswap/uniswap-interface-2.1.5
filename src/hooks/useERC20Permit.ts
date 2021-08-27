@@ -36,21 +36,21 @@ const PERMITTABLE_TOKENS: {
   [1]: {
     [USDC.address]: { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
     [DAI.address]: { type: PermitType.ALLOWED, name: 'Dai Stablecoin', version: '1' },
-    [AVE[1].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+    [AVE[1].address]: { type: PermitType.AMOUNT, name: 'Aveswap' },
   },
   [4]: {
     ['0xc7AD46e0b8a400Bb3C915120d284AafbA8fc4735']: { type: PermitType.ALLOWED, name: 'Dai Stablecoin', version: '1' },
-    [AVE[4].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+    [AVE[4].address]: { type: PermitType.AMOUNT, name: 'Aveswap' },
   },
   [3]: {
-    [AVE[3].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+    [AVE[3].address]: { type: PermitType.AMOUNT, name: 'Aveswap' },
     ['0x07865c6E87B9F70255377e024ace6630C1Eaa37F']: { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
   },
   [5]: {
-    [AVE[5].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+    [AVE[5].address]: { type: PermitType.AMOUNT, name: 'Aveswap' },
   },
   [42]: {
-    [AVE[42].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+    [AVE[42].address]: { type: PermitType.AMOUNT, name: 'Aveswap' },
   },
 }
 
@@ -259,7 +259,7 @@ function useERC20Permit(
 
 const REMOVE_V2_LIQUIDITY_PERMIT_INFO: PermitInfo = {
   version: '1',
-  name: 'Uniswap V2',
+  name: 'Aveswap V2',
   type: PermitType.AMOUNT,
 }
 
