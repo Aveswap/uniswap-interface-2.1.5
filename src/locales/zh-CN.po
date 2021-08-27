@@ -55,8 +55,8 @@ msgstr "-删除发送"
 #: src/components/earn/PoolCard.tsx
 #: src/pages/Earn/Manage.tsx
 #: src/pages/Earn/Manage.tsx
-msgid "0 UNI / week"
-msgstr "0 UNI 代币 / 每周"
+msgid "0 AVE / week"
+msgstr "0 AVE 代币 / 每周"
 
 #: src/components/FeeSelector/index.tsx
 msgid "0.05% fee"
@@ -128,8 +128,8 @@ msgid "<0>🎉 </0>Welcome to team Unicorn :) <1>🎉</1>"
 msgstr "<0>🎉 </0>欢迎加入Unicorn（独角兽）团队 :) <1>🎉</1>"
 
 #: src/pages/Vote/index.tsx
-msgid "A minimum threshold of 0.25% of the total UNI supply is required to submit proposals"
-msgstr "提交提案所需的最低门槛为 UNI 总供应量的 0.25%"
+msgid "A minimum threshold of 0.25% of the total AVE supply is required to submit proposals"
+msgstr "提交提案所需的最低门槛为 AVE 总供应量的 0.25%"
 
 #: src/components/Menu/index.tsx
 msgid "About"
@@ -269,8 +269,8 @@ msgid "Are you sure?"
 msgstr "您确定吗？"
 
 #: src/components/claim/ClaimModal.tsx
-msgid "As a member of the Uniswap community you may claim UNI to be used for voting and governance.<0/><1/><2>Read more about UNI</2>"
-msgstr "作为Uniswap社区的成员，您可以认领 UNI 代币，用于投票和治理。<0/><1/><2>阅读更多关于 UNI 代币信息</2>"
+msgid "As a member of the Uniswap community you may claim AVE to be used for voting and governance.<0/><1/><2>Read more about AVE</2>"
+msgstr "作为Uniswap社区的成员，您可以认领 AVE 代币，用于投票和治理。<0/><1/><2>阅读更多关于 AVE 代币信息</2>"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "At least {0} {1} and {2} {3} will be refunded to your wallet due to selected price range."
@@ -358,25 +358,25 @@ msgstr "领取"
 #: src/components/claim/AddressClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
-msgid "Claim UNI"
-msgstr "领取UNI代币"
+msgid "Claim AVE"
+msgstr "领取AVE代币"
 
 #: src/components/claim/AddressClaimModal.tsx
-msgid "Claim UNI Token"
-msgstr "领取 UNI 代币"
+msgid "Claim AVE Token"
+msgstr "领取 AVE 代币"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/ClaimRewardModal.tsx
-msgid "Claim accumulated UNI rewards"
-msgstr "领取累积的 UNI 代币奖励"
+msgid "Claim accumulated AVE rewards"
+msgstr "领取累积的 AVE 代币奖励"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Claim fees"
 msgstr "领取已累积的手续费"
 
 #: src/components/Popups/ClaimPopup.tsx
-msgid "Claim your UNI tokens"
-msgstr "领取您的 UNI 代币"
+msgid "Claim your AVE tokens"
+msgstr "领取您的 AVE 代币"
 
 #: src/components/claim/AddressClaimModal.tsx
 msgid "Claimed"
@@ -384,21 +384,21 @@ msgstr "已领取"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-msgid "Claimed UNI!"
-msgstr "已领取 UNI 代币！"
+msgid "Claimed AVE!"
+msgstr "已领取 AVE 代币！"
 
 #: src/components/claim/AddressClaimModal.tsx
 msgid "Claiming"
 msgstr "领取中"
 
 #: src/components/Header/index.tsx
-msgid "Claiming UNI"
-msgstr "正在领取UNI"
+msgid "Claiming AVE"
+msgstr "正在领取AVE"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-msgid "Claiming {0} UNI"
-msgstr "正在领取 {0} UNI 代币"
+msgid "Claiming {0} AVE"
+msgstr "正在领取 {0} AVE 代币"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Clear All"
@@ -619,8 +619,8 @@ msgid "Deposit Amounts"
 msgstr "充值数额"
 
 #: src/pages/Earn/Manage.tsx
-msgid "Deposit UNI-V2 LP Tokens"
-msgstr "充入 UNI-V2 流动池代币"
+msgid "Deposit AVE-V2 LP Tokens"
+msgstr "充入 AVE-V2 流动池代币"
 
 #: src/components/earn/StakingModal.tsx
 msgid "Deposit liquidity"
@@ -633,16 +633,16 @@ msgid "Deposit to {0}"
 msgstr "充入到 {0}"
 
 #: src/pages/Earn/index.tsx
-msgid "Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token."
-msgstr "充入您的流动池代币以领取 UNI（Uniswap 的治理代币）。"
+msgid "Deposit your Liquidity Provider tokens to receive AVE, the Uniswap protocol governance token."
+msgstr "充入您的流动池代币以领取 AVE（Uniswap 的治理代币）。"
 
 #: src/components/earn/UnstakingModal.tsx
 msgid "Deposited liquidity:"
 msgstr "已充入的流动资金："
 
 #: src/components/earn/StakingModal.tsx
-msgid "Deposited {0} UNI-V2"
-msgstr "已充入 {0} UNI-V2 流动池代币"
+msgid "Deposited {0} AVE-V2"
+msgstr "已充入 {0} AVE-V2 流动池代币"
 
 #: src/components/earn/StakingModal.tsx
 msgid "Depositing Liquidity"
@@ -685,8 +685,8 @@ msgid "Don’t see one of your v2 positions? <0>Import it.</0>"
 msgstr "看不到您的一些 v2 流动资金吗？<0>将它手动导入。</0>"
 
 #: src/components/vote/DelegateModal.tsx
-msgid "Earned UNI tokens represent voting shares in Uniswap governance."
-msgstr "已赚取的 UNI 代币代表了 Uniswap 治理中的投票份额。"
+msgid "Earned AVE tokens represent voting shares in Uniswap governance."
+msgstr "已赚取的 AVE 代币代表了 Uniswap 治理中的投票份额。"
 
 #: src/components/FeeSelector/index.tsx
 msgid "Edit"
@@ -709,8 +709,8 @@ msgid "Enter a valid slippage percentage"
 msgstr "输入有效的兑换率滑点百分比"
 
 #: src/components/claim/AddressClaimModal.tsx
-msgid "Enter an address to trigger a UNI claim. If the address has any claimable UNI it will be sent to them on submission."
-msgstr "输入地址来查看领取 UNI 代币的资质。如果地址有任何可领取的 UNI，代币将在提交领取申请后自动发送。"
+msgid "Enter an address to trigger a AVE claim. If the address has any claimable AVE it will be sent to them on submission."
+msgstr "输入地址来查看领取 AVE 代币的资质。如果地址有任何可领取的 AVE，代币将在提交领取申请后自动发送。"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
@@ -1133,8 +1133,8 @@ msgid "Once you are happy with the rate click supply to review."
 msgstr "对费率感到满意的话，请点击“供应”键，到审查步骤。"
 
 #: src/pages/Vote/VotePage.tsx
-msgid "Only UNI votes that were self delegated or delegated to another address before block {0} are eligible for voting."
-msgstr "只有在 {0} 区块编号之前已自行委托或委托给另一个区块链地址的 UNI 代币才有资格投票。"
+msgid "Only AVE votes that were self delegated or delegated to another address before block {0} are eligible for voting."
+msgstr "只有在 {0} 区块编号之前已自行委托或委托给另一个区块链地址的 AVE 代币才有资格投票。"
 
 #: src/components/Web3ReactManager/index.tsx
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device."
@@ -1318,8 +1318,8 @@ msgid "Read more"
 msgstr "阅读更多"
 
 #: src/pages/Earn/index.tsx
-msgid "Read more about UNI"
-msgstr "阅读更多关于 UNI 代币的信息"
+msgid "Read more about AVE"
+msgstr "阅读更多关于 AVE 代币的信息"
 
 #: src/pages/Vote/index.tsx
 msgid "Read more about Uniswap governance"
@@ -1478,8 +1478,8 @@ msgid "Status"
 msgstr "状态"
 
 #: src/pages/Earn/Manage.tsx
-msgid "Step 1. Get UNI-V2 Liquidity tokens"
-msgstr "第 1 步：获取 UNI-V2 流动池代币"
+msgid "Step 1. Get AVE-V2 Liquidity tokens"
+msgstr "第 1 步：获取 AVE-V2 流动池代币"
 
 #: src/state/governance/hooks.ts
 msgid "Submitted new proposal"
@@ -1694,37 +1694,37 @@ msgid "Turn On Expert Mode"
 msgstr "开启专家模式"
 
 #: src/components/Popups/ClaimPopup.tsx
-msgid "UNI has arrived"
-msgstr "UNI 代币已到账"
+msgid "AVE has arrived"
+msgstr "AVE 代币已到账"
 
 #: src/components/Header/UniBalanceContent.tsx
-msgid "UNI in circulation:"
-msgstr "流通中的 UNI 代币："
+msgid "AVE in circulation:"
+msgstr "流通中的 AVE 代币："
 
 #: src/components/Header/UniBalanceContent.tsx
-msgid "UNI price:"
-msgstr "UNI 代币兑换率："
+msgid "AVE price:"
+msgstr "AVE 代币兑换率："
 
 #: src/pages/Vote/index.tsx
-msgid "UNI tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or delegate your votes to a third party."
-msgstr "UNI代币代表了Uniswap治理中的投票份额。您可以自行为提案进行投票，或将您的投票权委托给第三方。"
+msgid "AVE tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or delegate your votes to a third party."
+msgstr "AVE代币代表了Uniswap治理中的投票份额。您可以自行为提案进行投票，或将您的投票权委托给第三方。"
 
 #: src/pages/RemoveLiquidity/index.tsx
-msgid "UNI {0}/{1} Burned"
-msgstr "UNI {0}/{1} 被摧毁"
+msgid "AVE {0}/{1} Burned"
+msgstr "AVE {0}/{1} 被摧毁"
 
 #: src/pages/Earn/Manage.tsx
-msgid "UNI-V2 LP tokens are required. Once you've added liquidity to the {0}-{1} pool you can stake your liquidity tokens on this page."
-msgstr "需要 UNI-V2 LP 代币。在您注入流动性到 {0}-{1} 池后，您就可以在此页面上抵押您的流动性代币。"
+msgid "AVE-V2 LP tokens are required. Once you've added liquidity to the {0}-{1} pool you can stake your liquidity tokens on this page."
+msgstr "需要 AVE-V2 LP 代币。在您注入流动性到 {0}-{1} 池后，您就可以在此页面上抵押您的流动性代币。"
 
 #: src/pages/Earn/Manage.tsx
-msgid "UNI-V2 {0}-{1}"
-msgstr "UNI-V2 {0}-{1}"
+msgid "AVE-V2 {0}-{1}"
+msgstr "AVE-V2 {0}-{1}"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-msgid "Unclaimed UNI"
-msgstr "未被领取的 UNI 代币"
+msgid "Unclaimed AVE"
+msgstr "未被领取的 AVE 代币"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Unclaimed fees"
@@ -1831,8 +1831,8 @@ msgid "V3 {0} Price:"
 msgstr "V3 {0} 兑换率："
 
 #: src/components/Header/UniBalanceContent.tsx
-msgid "View UNI Analytics"
-msgstr "查看 UNI 代币分析"
+msgid "View AVE Analytics"
+msgstr "查看 AVE 代币分析"
 
 #: src/pages/Pool/index.tsx
 msgid "View V2 Liquidity"
@@ -1915,12 +1915,12 @@ msgid "When you claim without withdrawing your liquidity remains in the mining p
 msgstr "当您领取奖励但没赎回流动资金时，流动资金仍然留在矿池内。"
 
 #: src/pages/Earn/Manage.tsx
-msgid "When you withdraw, the contract will automagically claim UNI on your behalf!"
-msgstr "当您赎回流动资金时，智能合约将自动为您领取 UNI 代币！"
+msgid "When you withdraw, the contract will automagically claim AVE on your behalf!"
+msgstr "当您赎回流动资金时，智能合约将自动为您领取 AVE 代币！"
 
 #: src/components/earn/UnstakingModal.tsx
-msgid "When you withdraw, your UNI is claimed and your liquidity is removed from the mining pool."
-msgstr "当您赎回流动资金时，您的 UNI 代币将被领取，流动资金也将从矿池中移除。"
+msgid "When you withdraw, your AVE is claimed and your liquidity is removed from the mining pool."
+msgstr "当您赎回流动资金时，您的 AVE 代币将被领取，流动资金也将从矿池中移除。"
 
 #: src/components/earn/UnstakingModal.tsx
 #: src/pages/Earn/Manage.tsx
@@ -1937,12 +1937,12 @@ msgid "Withdraw deposited liquidity"
 msgstr "赎回注入的流动资金"
 
 #: src/components/earn/UnstakingModal.tsx
-msgid "Withdrawing {0} UNI-V2"
-msgstr "赎回 {0} UNI-V2 流动池代币"
+msgid "Withdrawing {0} AVE-V2"
+msgstr "赎回 {0} AVE-V2 流动池代币"
 
 #: src/components/earn/UnstakingModal.tsx
-msgid "Withdrew UNI-V2!"
-msgstr "已赎回 UNI-V2！"
+msgid "Withdrew AVE-V2!"
+msgstr "已赎回 AVE-V2！"
 
 #: src/pages/Swap/index.tsx
 msgid "Wrap"
@@ -2016,8 +2016,8 @@ msgid "You will receive"
 msgstr "您将收到"
 
 #: src/components/Header/UniBalanceContent.tsx
-msgid "Your UNI Breakdown"
-msgstr "您的 UNI 代币明细表"
+msgid "Your AVE Breakdown"
+msgstr "您的 AVE 代币明细表"
 
 #: src/pages/Pool/v2.tsx
 msgid "Your V2 liquidity"
@@ -2103,8 +2103,8 @@ msgid "Your transactions will appear here..."
 msgstr "您的交易将出现在这里..."
 
 #: src/pages/Earn/Manage.tsx
-msgid "Your unclaimed UNI"
-msgstr "您未领取的 UNI 代币"
+msgid "Your unclaimed AVE"
+msgstr "您未领取的 AVE 代币"
 
 #: src/components/Settings/index.tsx
 msgid "confirm"
@@ -2192,24 +2192,24 @@ msgstr "{0} 待处理"
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
-msgid "{0} UNI"
-msgstr "{0} UNI 代币"
+msgid "{0} AVE"
+msgstr "{0} AVE 代币"
 
 #: src/components/earn/PoolCard.tsx
 #: src/components/earn/PoolCard.tsx
 #: src/components/earn/StakingModal.tsx
 #: src/pages/Earn/Manage.tsx
 #: src/pages/Earn/Manage.tsx
-msgid "{0} UNI / week"
-msgstr "{0} UNI 代币 / 每周"
+msgid "{0} AVE / week"
+msgstr "{0} AVE 代币 / 每周"
 
 #: src/components/earn/StakingModal.tsx
-msgid "{0} UNI-V2"
-msgstr "{0} UNI-V2 流动池代币"
+msgid "{0} AVE-V2"
+msgstr "{0} AVE-V2 流动池代币"
 
 #: src/pages/Earn/Manage.tsx
-msgid "{0} UNI-V2 LP tokens available"
-msgstr "{0} UNI-V2 流动池代币可用"
+msgid "{0} AVE-V2 LP tokens available"
+msgstr "{0} AVE-V2 流动池代币可用"
 
 #: src/components/vote/VoteModal.tsx
 msgid "{0} Votes"
@@ -2272,12 +2272,12 @@ msgid "{0}/{1} LP Tokens"
 msgstr "{0}/{1} 流动池代币"
 
 #: src/components/claim/ClaimModal.tsx
-msgid "{SOCKS_AMOUNT} UNI"
-msgstr "{SOCKS_AMOUNT} UNI 代币"
+msgid "{SOCKS_AMOUNT} AVE"
+msgstr "{SOCKS_AMOUNT} AVE 代币"
 
 #: src/components/claim/ClaimModal.tsx
-msgid "{USER_AMOUNT} UNI"
-msgstr "{USER_AMOUNT} UNI 代币"
+msgid "{USER_AMOUNT} AVE"
+msgstr "{USER_AMOUNT} AVE 代币"
 
 #: src/components/SearchModal/ManageLists.tsx
 msgid "{activeTokensOnThisChain} tokens"

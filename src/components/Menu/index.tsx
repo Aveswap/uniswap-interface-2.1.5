@@ -66,7 +66,7 @@ const StyledMenuButton = styled.button`
   }
 `
 
-const UNIbutton = styled(ButtonPrimary)`
+const AVEbutton = styled(ButtonPrimary)`
   background-color: ${({ theme }) => theme.bg3};
   background: radial-gradient(174.47% 188.91% at 1.84% 0%,#cc963d 0%,#cc963d 100%),#edeef2;
   border: none;
@@ -216,7 +216,7 @@ export default function Menu() {
   const toggle = useToggleModal(ApplicationModal.MENU)
   useOnClickOutside(node, open ? toggle : undefined)
   const openClaimModal = useToggleModal(ApplicationModal.ADDRESS_CLAIM)
-  const showUNIClaimOption = Boolean(!!account && !!chainId && !L2_CHAIN_IDS.includes(chainId))
+  const showAVEClaimOption = Boolean(!!account && !!chainId && !L2_CHAIN_IDS.includes(chainId))
   const { infoLink } = CHAIN_INFO[chainId ? chainId : SupportedChainId.MAINNET]
 
   const [darkMode, toggleDarkMode] = useDarkModeManager()
@@ -283,8 +283,8 @@ export default function Menu() {
                     <div>{darkMode ? <Trans>Light Theme</Trans> : <Trans>Dark Theme</Trans>}</div>
                     {darkMode ? <Moon opacity={0.6} size={16} /> : <Sun opacity={0.6} size={16} />}
                   </ToggleMenuItem>
-                  {showUNIClaimOption && (
-                    <UNIbutton
+                  {showAVEClaimOption && (
+                    <AVEbutton
                       onClick={openClaimModal}
                       padding="8px 16px"
                       width="100%"
@@ -292,7 +292,7 @@ export default function Menu() {
                       mt="0.5rem"
                     >
                       <Trans>Claim AVE</Trans>
-                    </UNIbutton>
+                    </AVEbutton>
                   )}
                 </MenuFlyout>
               )

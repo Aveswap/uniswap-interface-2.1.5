@@ -4,7 +4,7 @@ import styled from 'styled-components/macro'
 import { utils } from 'ethers'
 import { ExternalLink, TYPE } from 'theme'
 import { Currency, CurrencyAmount, Token } from '@uniswap/sdk-core'
-import { UNI } from '../../constants/tokens'
+import { AVE } from '../../constants/tokens'
 import AppBody from '../AppBody'
 import { CreateProposalTabs } from '../../components/NavigationTabs'
 import { ButtonError } from 'components/Button'
@@ -96,7 +96,7 @@ export default function CreateProposal() {
   const [attempting, setAttempting] = useState(false)
   const [proposalAction, setProposalAction] = useState(ProposalAction.TRANSFER_TOKEN)
   const [toAddressValue, setToAddressValue] = useState('')
-  const [currencyValue, setCurrencyValue] = useState<Currency>(UNI[chainId ?? 1])
+  const [currencyValue, setCurrencyValue] = useState<Currency>(AVE[chainId ?? 1])
   const [amountValue, setAmountValue] = useState('')
   const [titleValue, setTitleValue] = useState('')
   const [bodyValue, setBodyValue] = useState('')

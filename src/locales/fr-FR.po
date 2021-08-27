@@ -55,8 +55,8 @@ msgstr "- Supprimer le destinataire"
 #: src/components/earn/PoolCard.tsx
 #: src/pages/Earn/Manage.tsx
 #: src/pages/Earn/Manage.tsx
-msgid "0 UNI / week"
-msgstr "0 UNI / semaine"
+msgid "0 AVE / week"
+msgstr "0 AVE / semaine"
 
 #: src/components/FeeSelector/index.tsx
 msgid "0.05% fee"
@@ -128,8 +128,8 @@ msgid "<0>🎉 </0>Welcome to team Unicorn :) <1>🎉</1>"
 msgstr "<0>🎉 </0>Bienvenue dans l'équipe des Licornes :) <1>🎉</1>"
 
 #: src/pages/Vote/index.tsx
-msgid "A minimum threshold of 0.25% of the total UNI supply is required to submit proposals"
-msgstr "Un seuil minimum de 0,25% de l'offre totale d'UNI est requis pour soumettre des propositions"
+msgid "A minimum threshold of 0.25% of the total AVE supply is required to submit proposals"
+msgstr "Un seuil minimum de 0,25% de l'offre totale d'AVE est requis pour soumettre des propositions"
 
 #: src/components/Menu/index.tsx
 msgid "About"
@@ -269,8 +269,8 @@ msgid "Are you sure?"
 msgstr "Êtes-vous sûr(e) ?"
 
 #: src/components/claim/ClaimModal.tsx
-msgid "As a member of the Uniswap community you may claim UNI to be used for voting and governance.<0/><1/><2>Read more about UNI</2>"
-msgstr "En tant que membre de la communauté Uniswap, vous pouvez réclamer que UNI soit utilisé pour le vote et la gouvernance.<0/><1/><2>En savoir plus sur UNI</2>"
+msgid "As a member of the Uniswap community you may claim AVE to be used for voting and governance.<0/><1/><2>Read more about AVE</2>"
+msgstr "En tant que membre de la communauté Uniswap, vous pouvez réclamer que AVE soit utilisé pour le vote et la gouvernance.<0/><1/><2>En savoir plus sur AVE</2>"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "At least {0} {1} and {2} {3} will be refunded to your wallet due to selected price range."
@@ -358,25 +358,25 @@ msgstr "Réclamer"
 #: src/components/claim/AddressClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
-msgid "Claim UNI"
-msgstr "Réclamer vos UNI"
+msgid "Claim AVE"
+msgstr "Réclamer vos AVE"
 
 #: src/components/claim/AddressClaimModal.tsx
-msgid "Claim UNI Token"
-msgstr "Réclamer les jetons UNI"
+msgid "Claim AVE Token"
+msgstr "Réclamer les jetons AVE"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/ClaimRewardModal.tsx
-msgid "Claim accumulated UNI rewards"
-msgstr "Réclamer les récompenses UNI accumulées"
+msgid "Claim accumulated AVE rewards"
+msgstr "Réclamer les récompenses AVE accumulées"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Claim fees"
 msgstr "Réclamer les frais"
 
 #: src/components/Popups/ClaimPopup.tsx
-msgid "Claim your UNI tokens"
-msgstr "Réclamez vos jetons UNI"
+msgid "Claim your AVE tokens"
+msgstr "Réclamez vos jetons AVE"
 
 #: src/components/claim/AddressClaimModal.tsx
 msgid "Claimed"
@@ -384,21 +384,21 @@ msgstr "Réclamé"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-msgid "Claimed UNI!"
-msgstr "Réclamé UNI !"
+msgid "Claimed AVE!"
+msgstr "Réclamé AVE !"
 
 #: src/components/claim/AddressClaimModal.tsx
 msgid "Claiming"
 msgstr "Réclamation"
 
 #: src/components/Header/index.tsx
-msgid "Claiming UNI"
-msgstr "Réclamer UNI"
+msgid "Claiming AVE"
+msgstr "Réclamer AVE"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-msgid "Claiming {0} UNI"
-msgstr "Réclamation de {0} UNI"
+msgid "Claiming {0} AVE"
+msgstr "Réclamation de {0} AVE"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Clear All"
@@ -619,8 +619,8 @@ msgid "Deposit Amounts"
 msgstr "Montants du dépôt"
 
 #: src/pages/Earn/Manage.tsx
-msgid "Deposit UNI-V2 LP Tokens"
-msgstr "Déposer des jetons UNI-V2 LP"
+msgid "Deposit AVE-V2 LP Tokens"
+msgstr "Déposer des jetons AVE-V2 LP"
 
 #: src/components/earn/StakingModal.tsx
 msgid "Deposit liquidity"
@@ -633,16 +633,16 @@ msgid "Deposit to {0}"
 msgstr "Déposer vers {0}"
 
 #: src/pages/Earn/index.tsx
-msgid "Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token."
-msgstr "Déposez vos jetons de fournisseur de liquidité pour recevoir UNI, le jeton de gouvernance du protocole Uniswap."
+msgid "Deposit your Liquidity Provider tokens to receive AVE, the Uniswap protocol governance token."
+msgstr "Déposez vos jetons de fournisseur de liquidité pour recevoir AVE, le jeton de gouvernance du protocole Uniswap."
 
 #: src/components/earn/UnstakingModal.tsx
 msgid "Deposited liquidity:"
 msgstr "Dépôt de liquidité :"
 
 #: src/components/earn/StakingModal.tsx
-msgid "Deposited {0} UNI-V2"
-msgstr "Dépôt de {0} UNI-V2"
+msgid "Deposited {0} AVE-V2"
+msgstr "Dépôt de {0} AVE-V2"
 
 #: src/components/earn/StakingModal.tsx
 msgid "Depositing Liquidity"
@@ -685,8 +685,8 @@ msgid "Don’t see one of your v2 positions? <0>Import it.</0>"
 msgstr "Vous ne voyez pas une de vos positions v2 ? <0>Importez-la.</0>"
 
 #: src/components/vote/DelegateModal.tsx
-msgid "Earned UNI tokens represent voting shares in Uniswap governance."
-msgstr "Les jetons UNI gagnés représentent les parts de vote dans la gouvernance Uniswap."
+msgid "Earned AVE tokens represent voting shares in Uniswap governance."
+msgstr "Les jetons AVE gagnés représentent les parts de vote dans la gouvernance Uniswap."
 
 #: src/components/FeeSelector/index.tsx
 msgid "Edit"
@@ -709,8 +709,8 @@ msgid "Enter a valid slippage percentage"
 msgstr "Saisissez un pourcentage de slippage valide"
 
 #: src/components/claim/AddressClaimModal.tsx
-msgid "Enter an address to trigger a UNI claim. If the address has any claimable UNI it will be sent to them on submission."
-msgstr "Saisissez une adresse pour déclencher une réclamation UNI. Si l'adresse a une UNI réclamable, elle leur sera envoyée lors de la soumission."
+msgid "Enter an address to trigger a AVE claim. If the address has any claimable AVE it will be sent to them on submission."
+msgstr "Saisissez une adresse pour déclencher une réclamation AVE. Si l'adresse a une AVE réclamable, elle leur sera envoyée lors de la soumission."
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
@@ -1118,7 +1118,7 @@ msgstr "AU"
 
 #: src/components/Settings/index.tsx
 msgid "ONLY USE THIS MODE IF YOU KNOW WHAT YOU ARE DOING."
-msgstr "UTILISEZ CE MODE UNIQUEMENT SI VOUS SAVEZ CE QUE VOUS FAITES."
+msgstr "UTILISEZ CE MODE AVEQUEMENT SI VOUS SAVEZ CE QUE VOUS FAITES."
 
 #: src/components/Toggle/index.tsx
 msgid "Off"
@@ -1133,8 +1133,8 @@ msgid "Once you are happy with the rate click supply to review."
 msgstr "Une fois que vous êtes satisfait du taux cliquez sur fournir pour vérifier."
 
 #: src/pages/Vote/VotePage.tsx
-msgid "Only UNI votes that were self delegated or delegated to another address before block {0} are eligible for voting."
-msgstr "Seuls les votes UNI qui ont été auto-délégués ou délégués à une autre adresse avant le bloc {0} sont éligibles pour voter."
+msgid "Only AVE votes that were self delegated or delegated to another address before block {0} are eligible for voting."
+msgstr "Seuls les votes AVE qui ont été auto-délégués ou délégués à une autre adresse avant le bloc {0} sont éligibles pour voter."
 
 #: src/components/Web3ReactManager/index.tsx
 msgid "Oops! An unknown error occurred. Please refresh the page, or visit from another browser or device."
@@ -1318,8 +1318,8 @@ msgid "Read more"
 msgstr "Lire la suite"
 
 #: src/pages/Earn/index.tsx
-msgid "Read more about UNI"
-msgstr "En savoir plus sur UNI"
+msgid "Read more about AVE"
+msgstr "En savoir plus sur AVE"
 
 #: src/pages/Vote/index.tsx
 msgid "Read more about Uniswap governance"
@@ -1478,8 +1478,8 @@ msgid "Status"
 msgstr "Statut"
 
 #: src/pages/Earn/Manage.tsx
-msgid "Step 1. Get UNI-V2 Liquidity tokens"
-msgstr "Étape 1. Obtenir des jetons de liquidité UNI-V2"
+msgid "Step 1. Get AVE-V2 Liquidity tokens"
+msgstr "Étape 1. Obtenir des jetons de liquidité AVE-V2"
 
 #: src/state/governance/hooks.ts
 msgid "Submitted new proposal"
@@ -1694,37 +1694,37 @@ msgid "Turn On Expert Mode"
 msgstr "Activer le mode Expert"
 
 #: src/components/Popups/ClaimPopup.tsx
-msgid "UNI has arrived"
-msgstr "UNI est arrivé"
+msgid "AVE has arrived"
+msgstr "AVE est arrivé"
 
 #: src/components/Header/UniBalanceContent.tsx
-msgid "UNI in circulation:"
-msgstr "UNI en circulation :"
+msgid "AVE in circulation:"
+msgstr "AVE en circulation :"
 
 #: src/components/Header/UniBalanceContent.tsx
-msgid "UNI price:"
-msgstr "Prix UNI :"
+msgid "AVE price:"
+msgstr "Prix AVE :"
 
 #: src/pages/Vote/index.tsx
-msgid "UNI tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or delegate your votes to a third party."
-msgstr "Les jetons UNI représentent les parts de vote dans la gouvernance d'Uniswap. Vous pouvez voter sur chaque proposition vous-même ou déléguer vos votes à un tiers."
+msgid "AVE tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or delegate your votes to a third party."
+msgstr "Les jetons AVE représentent les parts de vote dans la gouvernance d'Uniswap. Vous pouvez voter sur chaque proposition vous-même ou déléguer vos votes à un tiers."
 
 #: src/pages/RemoveLiquidity/index.tsx
-msgid "UNI {0}/{1} Burned"
-msgstr "UNI {0}/{1} brûlé"
+msgid "AVE {0}/{1} Burned"
+msgstr "AVE {0}/{1} brûlé"
 
 #: src/pages/Earn/Manage.tsx
-msgid "UNI-V2 LP tokens are required. Once you've added liquidity to the {0}-{1} pool you can stake your liquidity tokens on this page."
-msgstr "Les jetons UNI-V2 LP sont requis. Une fois que vous avez ajouté de la liquidité au pool {0}-{1} , vous pouvez mettre vos jetons de liquidité sur cette page."
+msgid "AVE-V2 LP tokens are required. Once you've added liquidity to the {0}-{1} pool you can stake your liquidity tokens on this page."
+msgstr "Les jetons AVE-V2 LP sont requis. Une fois que vous avez ajouté de la liquidité au pool {0}-{1} , vous pouvez mettre vos jetons de liquidité sur cette page."
 
 #: src/pages/Earn/Manage.tsx
-msgid "UNI-V2 {0}-{1}"
-msgstr "UNI-V2 {0}-{1}"
+msgid "AVE-V2 {0}-{1}"
+msgstr "AVE-V2 {0}-{1}"
 
 #: src/components/earn/ClaimRewardModal.tsx
 #: src/components/earn/UnstakingModal.tsx
-msgid "Unclaimed UNI"
-msgstr "UNI non réclamé"
+msgid "Unclaimed AVE"
+msgstr "AVE non réclamé"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "Unclaimed fees"
@@ -1831,8 +1831,8 @@ msgid "V3 {0} Price:"
 msgstr "Prix V3 {0} :"
 
 #: src/components/Header/UniBalanceContent.tsx
-msgid "View UNI Analytics"
-msgstr "Voir les analyses UNI"
+msgid "View AVE Analytics"
+msgstr "Voir les analyses AVE"
 
 #: src/pages/Pool/index.tsx
 msgid "View V2 Liquidity"
@@ -1915,12 +1915,12 @@ msgid "When you claim without withdrawing your liquidity remains in the mining p
 msgstr "Lorsque vous réclamez sans retirer vos liquidités, vous restez dans le pool minier."
 
 #: src/pages/Earn/Manage.tsx
-msgid "When you withdraw, the contract will automagically claim UNI on your behalf!"
-msgstr "Lorsque vous vous retirez, le contrat réclamera automatiquement UNI en votre nom !"
+msgid "When you withdraw, the contract will automagically claim AVE on your behalf!"
+msgstr "Lorsque vous vous retirez, le contrat réclamera automatiquement AVE en votre nom !"
 
 #: src/components/earn/UnstakingModal.tsx
-msgid "When you withdraw, your UNI is claimed and your liquidity is removed from the mining pool."
-msgstr "Lorsque vous retirez, votre UNI est réclamée et votre liquidité est retirée de la pool de récompense."
+msgid "When you withdraw, your AVE is claimed and your liquidity is removed from the mining pool."
+msgstr "Lorsque vous retirez, votre AVE est réclamée et votre liquidité est retirée de la pool de récompense."
 
 #: src/components/earn/UnstakingModal.tsx
 #: src/pages/Earn/Manage.tsx
@@ -1937,12 +1937,12 @@ msgid "Withdraw deposited liquidity"
 msgstr "Retirer les liquidités déposées"
 
 #: src/components/earn/UnstakingModal.tsx
-msgid "Withdrawing {0} UNI-V2"
-msgstr "Retrait de {0} UNI-V2"
+msgid "Withdrawing {0} AVE-V2"
+msgstr "Retrait de {0} AVE-V2"
 
 #: src/components/earn/UnstakingModal.tsx
-msgid "Withdrew UNI-V2!"
-msgstr "Retrait de UNI-V2 !"
+msgid "Withdrew AVE-V2!"
+msgstr "Retrait de AVE-V2 !"
 
 #: src/pages/Swap/index.tsx
 msgid "Wrap"
@@ -2016,8 +2016,8 @@ msgid "You will receive"
 msgstr "Vous allez recevoir"
 
 #: src/components/Header/UniBalanceContent.tsx
-msgid "Your UNI Breakdown"
-msgstr "Votre répartition UNI"
+msgid "Your AVE Breakdown"
+msgstr "Votre répartition AVE"
 
 #: src/pages/Pool/v2.tsx
 msgid "Your V2 liquidity"
@@ -2103,8 +2103,8 @@ msgid "Your transactions will appear here..."
 msgstr "Vos transactions apparaîtront ici..."
 
 #: src/pages/Earn/Manage.tsx
-msgid "Your unclaimed UNI"
-msgstr "Votre UNI non réclamé"
+msgid "Your unclaimed AVE"
+msgstr "Votre AVE non réclamé"
 
 #: src/components/Settings/index.tsx
 msgid "confirm"
@@ -2192,24 +2192,24 @@ msgstr "{0} en attente"
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
 #: src/components/claim/ClaimModal.tsx
-msgid "{0} UNI"
-msgstr "{0} UNI"
+msgid "{0} AVE"
+msgstr "{0} AVE"
 
 #: src/components/earn/PoolCard.tsx
 #: src/components/earn/PoolCard.tsx
 #: src/components/earn/StakingModal.tsx
 #: src/pages/Earn/Manage.tsx
 #: src/pages/Earn/Manage.tsx
-msgid "{0} UNI / week"
-msgstr "{0} UNI / semaine"
+msgid "{0} AVE / week"
+msgstr "{0} AVE / semaine"
 
 #: src/components/earn/StakingModal.tsx
-msgid "{0} UNI-V2"
-msgstr "{0} UNI-V2"
+msgid "{0} AVE-V2"
+msgstr "{0} AVE-V2"
 
 #: src/pages/Earn/Manage.tsx
-msgid "{0} UNI-V2 LP tokens available"
-msgstr "{0} jetons UNI-V2 LP disponibles"
+msgid "{0} AVE-V2 LP tokens available"
+msgstr "{0} jetons AVE-V2 LP disponibles"
 
 #: src/components/vote/VoteModal.tsx
 msgid "{0} Votes"
@@ -2272,12 +2272,12 @@ msgid "{0}/{1} LP Tokens"
 msgstr "Jetons de {0}/{1} LP"
 
 #: src/components/claim/ClaimModal.tsx
-msgid "{SOCKS_AMOUNT} UNI"
-msgstr "{SOCKS_AMOUNT} UNI"
+msgid "{SOCKS_AMOUNT} AVE"
+msgstr "{SOCKS_AMOUNT} AVE"
 
 #: src/components/claim/ClaimModal.tsx
-msgid "{USER_AMOUNT} UNI"
-msgstr "{USER_AMOUNT} UNI"
+msgid "{USER_AMOUNT} AVE"
+msgstr "{USER_AMOUNT} AVE"
 
 #: src/components/SearchModal/ManageLists.tsx
 msgid "{activeTokensOnThisChain} tokens"

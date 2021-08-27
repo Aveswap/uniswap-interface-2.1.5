@@ -1,6 +1,6 @@
 import { Contract } from '@ethersproject/contracts'
 import { abi as GOVERNANCE_ABI } from '@uniswap/governance/build/GovernorAlpha.json'
-import { abi as UNI_ABI } from '@uniswap/governance/build/Uni.json'
+import { abi as AVE_ABI } from '@uniswap/governance/build/Uni.json'
 import { abi as STAKING_REWARDS_ABI } from '@uniswap/liquidity-staker/build/StakingRewards.json'
 import { abi as MERKLE_DISTRIBUTOR_ABI } from '@uniswap/merkle-distributor/build/MerkleDistributor.json'
 import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json'
@@ -35,7 +35,7 @@ import { Quoter, NonfungiblePositionManager, UniswapInterfaceMulticall } from 't
 import { V3Migrator } from 'types/v3/V3Migrator'
 import { getContract } from 'utils'
 import { Erc20, ArgentWalletDetector, EnsPublicResolver, EnsRegistrar, Weth } from '../abis/types'
-import { UNI, WETH9_EXTENDED } from '../constants/tokens'
+import { AVE, WETH9_EXTENDED } from '../constants/tokens'
 import { useActiveWeb3React } from './web3'
 
 // returns null on errors
@@ -122,7 +122,7 @@ export const useLatestGovernanceContract = useGovernanceV1Contract
 
 export function useUniContract() {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId ? UNI[chainId]?.address : undefined, UNI_ABI, true)
+  return useContract(chainId ? AVE[chainId]?.address : undefined, AVE_ABI, true)
 }
 
 export function useStakingContract(stakingAddress?: string, withSignerIfPossible?: boolean) {

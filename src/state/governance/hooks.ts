@@ -15,8 +15,8 @@ import { useActiveWeb3React } from 'hooks/web3'
 import { useCallback, useMemo } from 'react'
 import { calculateGasMargin } from 'utils/calculateGasMargin'
 import { SupportedChainId } from '../../constants/chains'
-import { UNISWAP_GRANTS_START_BLOCK } from '../../constants/proposals'
-import { UNI } from '../../constants/tokens'
+import { AVESWAP_GRANTS_START_BLOCK } from '../../constants/proposals'
+import { AVE } from '../../constants/tokens'
 import { useLogs } from '../logs/hooks'
 import { useSingleCallResult, useSingleContractMultipleData } from '../multicall/hooks'
 import { useTransactionAdder } from '../transactions/hooks'
@@ -159,7 +159,7 @@ export function useAllProposalData(): { data: ProposalData[]; loading: boolean }
       data: proposalsCallData.map((proposal, i) => {
         let description = formattedLogs[i]?.description
         const startBlock = parseInt(proposal?.result?.startBlock?.toString())
-        if (startBlock === UNISWAP_GRANTS_START_BLOCK) {
+        if (startBlock === AVESWAP_GRANTS_START_BLOCK) {
           description = AVESWAP_GRANTS_PROPOSAL_DESCRIPTION
         }
         return {
@@ -212,7 +212,7 @@ export function useUserVotes(): { loading: boolean; votes: CurrencyAmount<Token>
   // check for available votes
   const { result, loading } = useSingleCallResult(uniContract, 'getCurrentVotes', [account ?? undefined])
   return useMemo(() => {
-    const uni = chainId ? UNI[chainId] : undefined
+    const uni = chainId ? AVE[chainId] : undefined
     return { loading, votes: uni && result ? CurrencyAmount.fromRawAmount(uni, result?.[0]) : undefined }
   }, [chainId, loading, result])
 }
@@ -223,7 +223,7 @@ export function useUserVotesAsOfBlock(block: number | undefined): CurrencyAmount
   const uniContract = useUniContract()
 
   // check for available votes
-  const uni = chainId ? UNI[chainId] : undefined
+  const uni = chainId ? AVE[chainId] : undefined
   const votes = useSingleCallResult(uniContract, 'getPriorVotes', [account ?? undefined, block ?? undefined])
     ?.result?.[0]
   return votes && uni ? CurrencyAmount.fromRawAmount(uni, votes) : undefined
@@ -239,7 +239,7 @@ export function useDelegateCallback(): (delegatee: string | undefined) => undefi
     (delegatee: string | undefined) => {
       if (!library || !chainId || !account || !isAddress(delegatee ?? '')) return undefined
       const args = [delegatee]
-      if (!uniContract) throw new Error('No UNI Contract!')
+      if (!uniContract) throw new Error('No AVE Contract!')
       return uniContract.estimateGas.delegate(...args, {}).then((estimatedGasLimit) => {
         return uniContract
           .delegate(...args, { value: null, gasLimit: calculateGasMargin(chainId, estimatedGasLimit) })
@@ -331,7 +331,7 @@ export function useProposalThreshold(): CurrencyAmount<Token> | undefined {
 
   const latestGovernanceContract = useLatestGovernanceContract()
   const res = useSingleCallResult(latestGovernanceContract, 'proposalThreshold')
-  const uni = chainId ? UNI[chainId] : undefined
+  const uni = chainId ? AVE[chainId] : undefined
 
   if (res?.result?.[0] && uni) {
     return CurrencyAmount.fromRawAmount(uni, res.result[0])

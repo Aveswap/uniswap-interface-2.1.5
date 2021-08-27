@@ -69,7 +69,7 @@ export default function Earn() {
               <RowBetween>
                 <TYPE.white fontSize={14}>
                   <Trans>
-                    Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token.
+                    Deposit your Liquidity Provider tokens to receive AVE, the Uniswap protocol governance token.
                   </Trans>
                 </TYPE.white>
               </RowBetween>{' '}
@@ -79,7 +79,7 @@ export default function Earn() {
                 target="_blank"
               >
                 <TYPE.white fontSize={14}>
-                  <Trans>Read more about UNI</Trans>
+                  <Trans>Read more about AVE</Trans>
                 </TYPE.white>
               </ExternalLink>
             </AutoColumn>

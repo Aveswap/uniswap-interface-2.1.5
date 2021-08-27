@@ -99,13 +99,13 @@ export default function ClaimPopup() {
           <AutoColumn style={{ padding: '2rem 0', zIndex: 10 }} justify="center">
             <UniToken width="48px" src={tokenLogo} />{' '}
             <TYPE.white style={{ marginTop: '1rem' }} fontSize={36} fontWeight={600}>
-              {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} UNI
+              {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} AVE
             </TYPE.white>
             <TYPE.white style={{ paddingTop: '1.25rem', textAlign: 'center' }} fontWeight={600} color="white">
               <span role="img" aria-label="party">
                 🎉
               </span>{' '}
-              <Trans>UNI has arrived</Trans>{' '}
+              <Trans>AVE has arrived</Trans>{' '}
               <span role="img" aria-label="party">
                 🎉
               </span>
@@ -118,7 +118,7 @@ export default function ClaimPopup() {
           </AutoColumn>
           <AutoColumn style={{ zIndex: 10 }} justify="center">
             <ButtonPrimary padding="8px" $borderRadius="8px" width={'fit-content'} onClick={handleToggleSelfClaimModal}>
-              <Trans>Claim your UNI tokens</Trans>
+              <Trans>Claim your AVE tokens</Trans>
             </ButtonPrimary>
           </AutoColumn>
         </StyledClaimPopup>

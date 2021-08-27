@@ -129,7 +129,7 @@ const AccountElement = styled.div<{ active: boolean }>`
   }
 `
 
-const UNIAmount = styled(AccountElement)`
+const AVEAmount = styled(AccountElement)`
   color: white;
   padding: 4px 8px;
   height: 36px;
@@ -138,7 +138,7 @@ const UNIAmount = styled(AccountElement)`
   background: radial-gradient(174.47% 188.91% at 1.84% 0%,#cc963d 0%,#cc963d 100%),#edeef2;
 `
 
-const UNIWrapper = styled.span`
+const AVEWrapper = styled.span`
   width: fit-content;
   position: relative;
   cursor: pointer;
@@ -300,20 +300,20 @@ export default function Header() {
         <NetworkCard />
         <HeaderElement>
           {availableClaim && !showClaimPopup && (
-            <UNIWrapper onClick={toggleClaimModal}>
-              <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
+            <AVEWrapper onClick={toggleClaimModal}>
+              <AVEAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 <TYPE.white padding="0 2px">
                   {claimTxn && !claimTxn?.receipt ? (
                     <Dots>
-                      <Trans>Claiming UNI</Trans>
+                      <Trans>Claiming AVE</Trans>
                     </Dots>
                   ) : (
-                    <Trans>Claim UNI</Trans>
+                    <Trans>Claim AVE</Trans>
                   )}
                 </TYPE.white>
-              </UNIAmount>
+              </AVEAmount>
               <CardNoise />
-            </UNIWrapper>
+            </AVEWrapper>
           )}
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
