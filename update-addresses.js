@@ -1,8 +1,8 @@
 const { exec } = require("child_process");
 
-var UniswapV2Factory_Address = '0xBed712F0a3dC39E0EB35A0977F3E7b397D40eFbB';
-var INIT_CODE_PAIR_HASH = '0x4e8cdebbad8c932d47bf0564bdafa743dd913ae7e5d72fc28037a03e9c5b6741';
-var UniswapV2Router_Address = '0xf0e6Fa66DeBC76DB066904215F91Fe28065f6870';
+var UniswapV2Factory_Address = '0x34DF7e74aC1693950c721a33d65705C63d69BC17';
+var INIT_CODE_PAIR_HASH = '0xacc5cac6a81f463df7bf86511df475c855e730fbdb90c4b0e073a5ce5d3f2300';
+var UniswapV2Router_Address = '0x97E54F302490cadd87Afc44ed575Eccc96E7A99c';
 
 //UniswapV2Factory
 const factory_cmd = "sed -ri -e \"s/0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f/"+UniswapV2Factory_Address+"/g\" $(grep -Elr --binary-files=without-match \"0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f\" --exclude=update-addresses.js)";
