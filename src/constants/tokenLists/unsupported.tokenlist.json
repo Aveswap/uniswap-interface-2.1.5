@@ -303,7 +303,7 @@
       "chainId": 1,
       "address": "0x36A00FF9072570eF4B9292117850B8FE08d96cce",
       "symbol": "iAVE",
-      "name": "Synth Inverse Uniswap",
+      "name": "Synth Inverse Aveswap",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/iAVE.svg",
       "tags": ["inverse", "synth"]
@@ -672,7 +672,7 @@
       "chainId": 1,
       "address": "0x30635297E450b930f8693297eBa160D9e6c8eBcf",
       "symbol": "sAVE",
-      "name": "Synth Uniswap",
+      "name": "Synth Aveswap",
       "decimals": 18,
       "logoURI": "https://raw.githubusercontent.com/Synthetixio/synthetix-assets/v2.0.10/synths/sAVE.svg",
       "tags": ["synth"]

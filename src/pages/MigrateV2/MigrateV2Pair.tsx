@@ -127,7 +127,7 @@ function V2PairMigration({
   const v2FactoryAddress = chainId ? V2_FACTORY_ADDRESSES[chainId] : undefined
 
   const pairFactory = useSingleCallResult(pair, 'factory')
-  const isNotUniswap = pairFactory.result?.[0] && pairFactory.result[0] !== v2FactoryAddress
+  const isNotAveswap = pairFactory.result?.[0] && pairFactory.result[0] !== v2FactoryAddress
 
   const deadline = useTransactionDeadline() // custom from users settings
   const blockTimestamp = useCurrentBlockTimestamp()
@@ -241,7 +241,7 @@ function V2PairMigration({
   const isArgentWallet = useIsArgentWallet()
 
   const approve = useCallback(async () => {
-    if (isNotUniswap || isArgentWallet) {
+    if (isNotAveswap || isArgentWallet) {
       // sushi has to be manually approved
       await approveManually()
     } else if (gatherPermitSignature) {
@@ -256,7 +256,7 @@ function V2PairMigration({
     } else {
       await approveManually()
     }
-  }, [isNotUniswap, isArgentWallet, gatherPermitSignature, approveManually])
+  }, [isNotAveswap, isArgentWallet, gatherPermitSignature, approveManually])
 
   const addTransaction = useTransactionAdder()
   const isMigrationPending = useIsTransactionPending(pendingMigrationHash ?? undefined)
@@ -336,7 +336,7 @@ function V2PairMigration({
           .then((response: TransactionResponse) => {
             ReactGA.event({
               category: 'Migrate',
-              action: `${isNotUniswap ? 'SushiSwap' : 'V2'}->V3`,
+              action: `${isNotAveswap ? 'SushiSwap' : 'V2'}->V3`,
               label: `${currency0.symbol}/${currency1.symbol}`,
             })
 
@@ -351,7 +351,7 @@ function V2PairMigration({
       })
   }, [
     chainId,
-    isNotUniswap,
+    isNotAveswap,
     migrator,
     noLiquidity,
     blockTimestamp,
@@ -379,13 +379,13 @@ function V2PairMigration({
     <AutoColumn gap="20px">
       <TYPE.body my={9} style={{ fontWeight: 400 }}>
         <Trans>
-          This tool will safely migrate your {isNotUniswap ? 'SushiSwap' : 'V2'} liquidity to V3. The process is
+          This tool will safely migrate your {isNotAveswap ? 'SushiSwap' : 'V2'} liquidity to V3. The process is
           completely trustless thanks to the{' '}
         </Trans>
         {chainId && migrator && (
           <ExternalLink href={getExplorerLink(chainId, migrator.address, ExplorerDataType.ADDRESS)}>
             <TYPE.blue display="inline">
-              <Trans>Uniswap migration contract↗</Trans>
+              <Trans>Aveswap migration contract↗</Trans>
             </TYPE.blue>
           </ExternalLink>
         )}
@@ -403,7 +403,7 @@ function V2PairMigration({
                 </Trans>
               </TYPE.mediumHeader>
             </RowFixed>
-            <Badge variant={BadgeVariant.WARNING}>{isNotUniswap ? 'Sushi' : 'V2'}</Badge>
+            <Badge variant={BadgeVariant.WARNING}>{isNotAveswap ? 'Sushi' : 'V2'}</Badge>
           </RowBetween>
           <LiquidityInfo token0Amount={token0Value} token1Amount={token1Value} />
         </AutoColumn>
@@ -433,8 +433,8 @@ function V2PairMigration({
               <AlertCircle color={theme.text1} style={{ marginBottom: '12px', opacity: 0.8 }} />
               <TYPE.body fontSize={14} style={{ marginBottom: 8, fontWeight: 500, opacity: 0.8 }} textAlign="center">
                 <Trans>
-                  You are the first liquidity provider for this Uniswap V3 pool. Your liquidity will migrate at the
-                  current {isNotUniswap ? 'SushiSwap' : 'V2'} price.
+                  You are the first liquidity provider for this Aveswap V3 pool. Your liquidity will migrate at the
+                  current {isNotAveswap ? 'SushiSwap' : 'V2'} price.
                 </Trans>
               </TYPE.body>
 
@@ -447,7 +447,7 @@ function V2PairMigration({
                   <RowBetween>
                     <TYPE.body fontWeight={500} fontSize={14}>
                       <Trans>
-                        {isNotUniswap ? 'SushiSwap' : 'V2'} {invertPrice ? currency1.symbol : currency0.symbol} Price:
+                        {isNotAveswap ? 'SushiSwap' : 'V2'} {invertPrice ? currency1.symbol : currency0.symbol} Price:
                       </Trans>{' '}
                       {invertPrice
                         ? `${v2SpotPrice?.invert()?.toSignificant(6)} ${currency0.symbol}`
@@ -465,7 +465,7 @@ function V2PairMigration({
                 <RowBetween>
                   <TYPE.body fontSize={14}>
                     <Trans>
-                      {isNotUniswap ? 'SushiSwap' : 'V2'} {invertPrice ? currency1.symbol : currency0.symbol} Price:
+                      {isNotAveswap ? 'SushiSwap' : 'V2'} {invertPrice ? currency1.symbol : currency0.symbol} Price:
                     </Trans>
                   </TYPE.body>
                   <TYPE.black fontSize={14}>
@@ -497,7 +497,7 @@ function V2PairMigration({
               </AutoColumn>
               <TYPE.body fontSize={14} style={{ marginTop: 8, fontWeight: 400 }}>
                 <Trans>
-                  You should only deposit liquidity into Uniswap V3 at a price you believe is correct. <br />
+                  You should only deposit liquidity into Aveswap V3 at a price you believe is correct. <br />
                   If the price seems incorrect, you can either make a swap to move the price or wait for someone else to
                   do so.
                 </Trans>

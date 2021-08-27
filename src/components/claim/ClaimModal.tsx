@@ -151,7 +151,7 @@ export default function ClaimModal() {
           <AutoColumn gap="md" style={{ padding: '1rem', paddingTop: '0' }} justify="center">
             <TYPE.subHeader fontWeight={500}>
               <Trans>
-                As a member of the Uniswap community you may claim AVE to be used for voting and governance.
+                As a member of the Aveswap community you may claim AVE to be used for voting and governance.
                 <br />
                 <br />
                 <ExternalLink href="https://aveswap.io/blog/uni">Read more about AVE</ExternalLink>

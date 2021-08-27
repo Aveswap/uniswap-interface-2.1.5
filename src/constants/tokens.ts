@@ -108,11 +108,11 @@ export const ETH2X_FLI = new Token(
   'ETH 2x Flexible Leverage Index'
 )
 export const AVE: { [chainId: number]: Token } = {
-  [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, AVE_ADDRESS[1], 18, 'AVE', 'Uniswap'),
-  [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, AVE_ADDRESS[4], 18, 'AVE', 'Uniswap'),
-  [SupportedChainId.ROPSTEN]: new Token(SupportedChainId.ROPSTEN, AVE_ADDRESS[3], 18, 'AVE', 'Uniswap'),
-  [SupportedChainId.GOERLI]: new Token(SupportedChainId.GOERLI, AVE_ADDRESS[5], 18, 'AVE', 'Uniswap'),
-  [SupportedChainId.KOVAN]: new Token(SupportedChainId.KOVAN, AVE_ADDRESS[42], 18, 'AVE', 'Uniswap'),
+  [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, AVE_ADDRESS[1], 18, 'AVE', 'Aveswap'),
+  [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, AVE_ADDRESS[4], 18, 'AVE', 'Aveswap'),
+  [SupportedChainId.ROPSTEN]: new Token(SupportedChainId.ROPSTEN, AVE_ADDRESS[3], 18, 'AVE', 'Aveswap'),
+  [SupportedChainId.GOERLI]: new Token(SupportedChainId.GOERLI, AVE_ADDRESS[5], 18, 'AVE', 'Aveswap'),
+  [SupportedChainId.KOVAN]: new Token(SupportedChainId.KOVAN, AVE_ADDRESS[42], 18, 'AVE', 'Aveswap'),
 }
 
 export const WETH9_EXTENDED: { [chainId: number]: Token } = {

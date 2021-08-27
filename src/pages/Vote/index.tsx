@@ -135,13 +135,13 @@ export default function Vote() {
               <AutoColumn gap="md">
                 <RowBetween>
                   <TYPE.white fontWeight={600}>
-                    <Trans>Uniswap Governance</Trans>
+                    <Trans>Aveswap Governance</Trans>
                   </TYPE.white>
                 </RowBetween>
                 <RowBetween>
                   <TYPE.white fontSize={14}>
                     <Trans>
-                      AVE tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself
+                      AVE tokens represent voting shares in Aveswap governance. You can vote on each proposal yourself
                       or delegate your votes to a third party.
                     </Trans>
                   </TYPE.white>
@@ -152,7 +152,7 @@ export default function Vote() {
                   target="_blank"
                 >
                   <TYPE.white fontSize={14}>
-                    <Trans>Read more about Uniswap governance</Trans>
+                    <Trans>Read more about Aveswap governance</Trans>
                   </TYPE.white>
                 </ExternalLink>
               </AutoColumn>
