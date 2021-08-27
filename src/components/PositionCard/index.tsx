@@ -299,19 +299,19 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
               </Text>
             </FixedHeightRow>
 
-            <ButtonSecondary padding="8px" $borderRadius="8px">
+            {/*<ButtonSecondary padding="8px" $borderRadius="8px">
               <ExternalLink
                 style={{ width: '100%', textAlign: 'center' }}
-                href={`https://v2.info.uniswap.org/account/${account}`}
+                href={`https://v2.info.aveswap.io/account/${account}`}
               >
                 <Trans>
                   View accrued fees and analytics<span style={{ fontSize: '11px' }}>↗</span>
                 </Trans>
               </ExternalLink>
-            </ButtonSecondary>
+            </ButtonSecondary>*/}
             {userDefaultPoolBalance && JSBI.greaterThan(userDefaultPoolBalance.quotient, BIG_INT_ZERO) && (
               <RowBetween marginTop="10px">
-                <ButtonPrimary
+                {/*<ButtonPrimary
                   padding="8px"
                   $borderRadius="8px"
                   as={Link}
@@ -319,7 +319,7 @@ export default function FullPositionCard({ pair, border, stakedBalance }: Positi
                   width="32%"
                 >
                   <Trans>Migrate</Trans>
-                </ButtonPrimary>
+                </ButtonPrimary>*/}
                 <ButtonPrimary
                   padding="8px"
                   $borderRadius="8px"

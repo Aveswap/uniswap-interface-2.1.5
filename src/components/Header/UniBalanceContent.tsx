@@ -5,7 +5,7 @@ import { useMemo } from 'react'
 import { X } from 'react-feather'
 import styled from 'styled-components/macro'
 import tokenLogo from '../../assets/images/token-logo.png'
-import { UNI } from '../../constants/tokens'
+import { AVE } from '../../constants/tokens'
 import { useMerkleDistributorContract } from '../../hooks/useContract'
 import useCurrentBlockTimestamp from '../../hooks/useCurrentBlockTimestamp'
 import { useTotalSupply } from '../../hooks/useTotalSupply'
@@ -44,7 +44,7 @@ const StyledClose = styled(X)`
  */
 export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowUniBalanceModal: any }) {
   const { account, chainId } = useActiveWeb3React()
-  const uni = chainId ? UNI[chainId] : undefined
+  const uni = chainId ? AVE[chainId] : undefined
 
   const total = useAggregateUniBalance()
   const uniBalance: CurrencyAmount<Token> | undefined = useTokenBalance(account ?? undefined, uni)
@@ -70,7 +70,7 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
         <CardSection gap="md">
           <RowBetween>
             <TYPE.white color="white">
-              <Trans>Your UNI Breakdown</Trans>
+              <Trans>Your AVE Breakdown</Trans>
             </TYPE.white>
             <StyledClose stroke="white" onClick={() => setShowUniBalanceModal(false)} />
           </RowBetween>
@@ -114,13 +114,13 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
           <AutoColumn gap="md">
             <RowBetween>
               <TYPE.white color="white">
-                <Trans>UNI price:</Trans>
+                <Trans>AVE price:</Trans>
               </TYPE.white>
               <TYPE.white color="white">${uniPrice?.toFixed(2) ?? '-'}</TYPE.white>
             </RowBetween>
             <RowBetween>
               <TYPE.white color="white">
-                <Trans>UNI in circulation:</Trans>
+                <Trans>AVE in circulation:</Trans>
               </TYPE.white>
               <TYPE.white color="white">{circulation?.toFixed(0, { groupSeparator: ',' })}</TYPE.white>
             </RowBetween>
@@ -132,7 +132,7 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
             </RowBetween>
             {uni && uni.chainId === 1 ? (
               <ExternalLink href={`${infoLink}/token/${uni.address}`}>
-                <Trans>View UNI Analytics</Trans>
+                <Trans>View AVE Analytics</Trans>
               </ExternalLink>
             ) : null}
           </AutoColumn>

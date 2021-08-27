@@ -29,7 +29,7 @@ export interface GetQuoteResult {
 
 export const routingApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.uniswap.org/v1/',
+    baseUrl: 'https://api.aveswap.io/v1/',
   }),
   endpoints: (build) => ({
     getQuote: build.query<

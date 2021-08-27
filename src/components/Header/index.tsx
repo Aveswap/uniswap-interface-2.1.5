@@ -129,16 +129,16 @@ const AccountElement = styled.div<{ active: boolean }>`
   }
 `
 
-const UNIAmount = styled(AccountElement)`
+const AVEAmount = styled(AccountElement)`
   color: white;
   padding: 4px 8px;
   height: 36px;
   font-weight: 500;
   background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
+  background: radial-gradient(174.47% 188.91% at 1.84% 0%,#cc963d 0%,#cc963d 100%),#edeef2;
 `
 
-const UNIWrapper = styled.span`
+const AVEWrapper = styled.span`
   width: fit-content;
   position: relative;
   cursor: pointer;
@@ -285,35 +285,35 @@ export default function Header() {
         >
           <Trans>Pool</Trans>
         </StyledNavLink>
-        {chainId && chainId === SupportedChainId.MAINNET && (
+        {/*{chainId && chainId === SupportedChainId.MAINNET && (
           <StyledNavLink id={`vote-nav-link`} to={'/vote'}>
             <Trans>Vote</Trans>
           </StyledNavLink>
-        )}
-        <StyledExternalLink id={`charts-nav-link`} href={infoLink}>
+        )}*/}
+        {/*<StyledExternalLink id={`charts-nav-link`} href={infoLink}>
           <Trans>Charts</Trans>
           <sup>↗</sup>
-        </StyledExternalLink>
+        </StyledExternalLink>*/}
       </HeaderLinks>
 
       <HeaderControls>
         <NetworkCard />
         <HeaderElement>
           {availableClaim && !showClaimPopup && (
-            <UNIWrapper onClick={toggleClaimModal}>
-              <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
+            <AVEWrapper onClick={toggleClaimModal}>
+              <AVEAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 <TYPE.white padding="0 2px">
                   {claimTxn && !claimTxn?.receipt ? (
                     <Dots>
-                      <Trans>Claiming UNI</Trans>
+                      <Trans>Claiming AVE</Trans>
                     </Dots>
                   ) : (
-                    <Trans>Claim UNI</Trans>
+                    <Trans>Claim AVE</Trans>
                   )}
                 </TYPE.white>
-              </UNIAmount>
+              </AVEAmount>
               <CardNoise />
-            </UNIWrapper>
+            </AVEWrapper>
           )}
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (

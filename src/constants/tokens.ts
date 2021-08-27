@@ -1,5 +1,5 @@
 import { WETH9, Token, Ether } from '@uniswap/sdk-core'
-import { UNI_ADDRESS } from './addresses'
+import { AVE_ADDRESS } from './addresses'
 import { SupportedChainId } from './chains'
 
 export const AMPL = new Token(
@@ -107,12 +107,12 @@ export const ETH2X_FLI = new Token(
   'ETH2x-FLI',
   'ETH 2x Flexible Leverage Index'
 )
-export const UNI: { [chainId: number]: Token } = {
-  [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.ROPSTEN]: new Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.GOERLI]: new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.KOVAN]: new Token(SupportedChainId.KOVAN, UNI_ADDRESS[42], 18, 'UNI', 'Uniswap'),
+export const AVE: { [chainId: number]: Token } = {
+  [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, AVE_ADDRESS[1], 18, 'AVE', 'Uniswap'),
+  [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, AVE_ADDRESS[4], 18, 'AVE', 'Uniswap'),
+  [SupportedChainId.ROPSTEN]: new Token(SupportedChainId.ROPSTEN, AVE_ADDRESS[3], 18, 'AVE', 'Uniswap'),
+  [SupportedChainId.GOERLI]: new Token(SupportedChainId.GOERLI, AVE_ADDRESS[5], 18, 'AVE', 'Uniswap'),
+  [SupportedChainId.KOVAN]: new Token(SupportedChainId.KOVAN, AVE_ADDRESS[42], 18, 'AVE', 'Uniswap'),
 }
 
 export const WETH9_EXTENDED: { [chainId: number]: Token } = {

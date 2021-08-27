@@ -4,7 +4,7 @@ import styled from 'styled-components/macro'
 import { utils } from 'ethers'
 import { ExternalLink, TYPE } from 'theme'
 import { Currency, CurrencyAmount, Token } from '@uniswap/sdk-core'
-import { UNI } from '../../constants/tokens'
+import { AVE } from '../../constants/tokens'
 import AppBody from '../AppBody'
 import { CreateProposalTabs } from '../../components/NavigationTabs'
 import { ButtonError } from 'components/Button'
@@ -96,7 +96,7 @@ export default function CreateProposal() {
   const [attempting, setAttempting] = useState(false)
   const [proposalAction, setProposalAction] = useState(ProposalAction.TRANSFER_TOKEN)
   const [toAddressValue, setToAddressValue] = useState('')
-  const [currencyValue, setCurrencyValue] = useState<Currency>(UNI[chainId ?? 1])
+  const [currencyValue, setCurrencyValue] = useState<Currency>(AVE[chainId ?? 1])
   const [amountValue, setAmountValue] = useState('')
   const [titleValue, setTitleValue] = useState('')
   const [bodyValue, setBodyValue] = useState('')
@@ -233,7 +233,7 @@ ${bodyValue}
                 <strong>Tip:</strong> Select an action and describe your proposal for the community. The proposal cannot
                 be modified after submission, so please verify all information before submitting. The voting period will
                 begin immediately and last for 7 days. To propose a custom action,{' '}
-                <ExternalLink href="https://uniswap.org/docs/v2/governance/governance-reference/#propose">
+                <ExternalLink href="https://aveswap.io/docs/v2/governance/governance-reference/#propose">
                   read the docs
                 </ExternalLink>
                 .

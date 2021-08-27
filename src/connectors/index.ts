@@ -4,7 +4,7 @@ import { InjectedConnector } from '@web3-react/injected-connector'
 import { PortisConnector } from '@web3-react/portis-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { WalletLinkConnector } from '@web3-react/walletlink-connector'
-import UNISWAP_LOGO_URL from '../assets/svg/logo.svg'
+import AVESWAP_LOGO_URL from '../assets/svg/logo.svg'
 import { ALL_SUPPORTED_CHAIN_IDS, SupportedChainId } from '../constants/chains'
 import getLibrary from '../utils/getLibrary'
 import { FortmaticConnector } from './Fortmatic'
@@ -70,5 +70,5 @@ export const portis = new PortisConnector({
 export const walletlink = new WalletLinkConnector({
   url: NETWORK_URLS[SupportedChainId.MAINNET],
   appName: 'Aveswap',
-  appLogoUrl: UNISWAP_LOGO_URL,
+  appLogoUrl: AVESWAP_LOGO_URL,
 })

@@ -15,7 +15,7 @@ import { AutoRow, RowBetween, RowFixed } from 'components/Row'
 import { SwitchLocaleLink } from 'components/SwitchLocaleLink'
 import DelegateModal from 'components/vote/DelegateModal'
 import { ZERO_ADDRESS } from '../../constants/misc'
-import { UNI } from '../../constants/tokens'
+import { AVE } from '../../constants/tokens'
 import { useActiveWeb3React } from 'hooks/web3'
 import { ApplicationModal } from 'state/application/actions'
 import { useModalOpen, useToggleDelegateModal } from 'state/application/hooks'
@@ -110,7 +110,7 @@ export default function Vote() {
   const { loading: loadingAvailableVotes, votes: availableVotes } = useUserVotes()
   const uniBalance: CurrencyAmount<Token> | undefined = useTokenBalance(
     account ?? undefined,
-    chainId ? UNI[chainId] : undefined
+    chainId ? AVE[chainId] : undefined
   )
   const userDelegatee: string | undefined = useUserDelegatee()
 
@@ -141,14 +141,14 @@ export default function Vote() {
                 <RowBetween>
                   <TYPE.white fontSize={14}>
                     <Trans>
-                      UNI tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself
+                      AVE tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself
                       or delegate your votes to a third party.
                     </Trans>
                   </TYPE.white>
                 </RowBetween>
                 <ExternalLink
                   style={{ color: 'white', textDecoration: 'underline' }}
-                  href="https://uniswap.org/blog/uni"
+                  href="https://aveswap.io/blog/uni"
                   target="_blank"
                 >
                   <TYPE.white fontSize={14}>
@@ -247,7 +247,7 @@ export default function Vote() {
             })}
         </TopSection>
         <TYPE.subHeader color="text3">
-          <Trans>A minimum threshold of 0.25% of the total UNI supply is required to submit proposals</Trans>
+          <Trans>A minimum threshold of 0.25% of the total AVE supply is required to submit proposals</Trans>
         </TYPE.subHeader>
       </PageWrapper>
       <SwitchLocaleLink />
