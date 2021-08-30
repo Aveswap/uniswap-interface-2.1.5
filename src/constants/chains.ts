@@ -7,6 +7,7 @@ export enum SupportedChainId {
   RINKEBY = 4,
   GOERLI = 5,
   KOVAN = 42,
+  BINANCE = 56,
 
   ARBITRUM_ONE = 42161,
   ARBITRUM_RINKEBY = 421611,
@@ -20,6 +21,7 @@ export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
   SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
   SupportedChainId.KOVAN,
+  SupportedChainId.BINANCE,
 
   SupportedChainId.ARBITRUM_ONE,
   SupportedChainId.ARBITRUM_RINKEBY,
@@ -33,6 +35,7 @@ export const L1_CHAIN_IDS = [
   SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
   SupportedChainId.KOVAN,
+  SupportedChainId.BINANCE,
 ] as const
 
 export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number]
@@ -83,7 +86,7 @@ export const CHAIN_INFO: ChainInfo = {
     docs: 'https://docs.aveswap.io/',
     explorer: 'https://etherscan.io/',
     infoLink: 'https://info.aveswap.io/#/',
-    label: 'Mainnet',
+    label: 'Ethereum',
   },
   [SupportedChainId.RINKEBY]: {
     docs: 'https://docs.aveswap.io/',
@@ -102,6 +105,12 @@ export const CHAIN_INFO: ChainInfo = {
     explorer: 'https://kovan.etherscan.io/',
     infoLink: 'https://info.aveswap.io/#/',
     label: 'Kovan',
+  },
+  [SupportedChainId.BINANCE]: {
+    docs: 'https://docs.aveswap.io/',
+    explorer: 'https://bscscan.com/',
+    infoLink: 'https://info.aveswap.io/#/',
+    label: 'Binance',
   },
   [SupportedChainId.GOERLI]: {
     docs: 'https://docs.aveswap.io/',

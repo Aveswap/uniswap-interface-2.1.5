@@ -2,6 +2,13 @@ import { WETH9, Token, Ether } from '@uniswap/sdk-core'
 import { AVE_ADDRESS } from './addresses'
 import { SupportedChainId } from './chains'
 
+export const WBNB = new Token(
+  SupportedChainId.BINANCE,
+  '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+  18,
+  'WBNB',
+  'Wrapped BNB'
+)
 export const AMPL = new Token(
   SupportedChainId.MAINNET,
   '0xD46bA6D942050d489DBd938a2C909A5d5039A161',
@@ -147,9 +154,21 @@ export const WETH9_EXTENDED: { [chainId: number]: Token } = {
   ),
 }
 
+export const WBNB_EXTENDED: { [chainId: number]: Token } = {
+  ...WBNB,
+  [SupportedChainId.BINANCE]: new Token(
+    SupportedChainId.BINANCE,
+    '0x4200000000000000000000000000000000000006',
+    18,
+    'WBNB',
+    'Wrapped BNB'
+  ),
+}
+
 export class ExtendedEther extends Ether {
   public get wrapped(): Token {
     if (this.chainId in WETH9_EXTENDED) return WETH9_EXTENDED[this.chainId]
+    if (this.chainId in WBNB_EXTENDED) return WETH9_EXTENDED[this.chainId]
     throw new Error('Unsupported chain ID')
   }
 

@@ -110,6 +110,45 @@ const MenuFlyout = styled.span`
     margin-bottom: 8px;
   }
 `
+const NetworkWrapper = styled.span`
+  position: relative;
+  cursor: pointer;
+`
+
+const NetworkMenuFlyout = styled.span`
+  background-color: ${({ theme }) => theme.bg1};
+  border: 1px solid ${({ theme }) => theme.bg0};
+
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
+    0px 24px 32px rgba(0, 0, 0, 0.01);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  position: absolute;
+  left: 0rem;
+  top: 3rem;
+  z-index: 100;
+  width: 170px;
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+   
+    bottom: unset;
+    top: 4.5em
+    right: 0;
+
+  `};
+  > {
+    padding: 12px;
+  }
+  > :not(:first-child) {
+    margin-top: 8px;
+  }
+  > :not(:last-child) {
+    margin-bottom: 8px;
+  }
+`
+
 const LinkOutCircle = styled(ArrowDownCircle)`
   transform: rotate(230deg);
   width: 16px;
@@ -166,6 +205,8 @@ export default function NetworkCard() {
   const node = useRef<HTMLDivElement>(null)
   const open = useModalOpen(ApplicationModal.ARBITRUM_OPTIONS)
   const toggle = useToggleModal(ApplicationModal.ARBITRUM_OPTIONS)
+  const openNetwork = useModalOpen(ApplicationModal.NETWORK_OPTIONS)
+  const toggleNetworkSwitch = useToggleModal(ApplicationModal.NETWORK_OPTIONS)
   useOnClickOutside(node, open ? toggle : undefined)
 
   const [implements3085, setImplements3085] = useState(false)
@@ -182,7 +223,7 @@ export default function NetworkCard() {
   }, [library, chainId])
 
   const info = chainId ? CHAIN_INFO[chainId] : undefined
-  if (!chainId || chainId === SupportedChainId.MAINNET || !info || !library) {
+  if (!chainId || !info || !library) {
     return null
   }
 
@@ -230,5 +271,28 @@ export default function NetworkCard() {
     )
   }
 
-  return <FallbackWrapper title={info.label}>{info.label}</FallbackWrapper>
+  return (
+    <NetworkWrapper style={{ minWidth: "max-content" }}>
+      <FallbackWrapper title={info.label} onClick={toggleNetworkSwitch}>{info.label} <ChevronDown size="15" />
+</FallbackWrapper>
+      {openNetwork && (
+        <NetworkMenuFlyout>
+          {implements3085 ? (
+            <div>
+              <div onClick={() => switchToNetwork({ library, chainId: SupportedChainId.MAINNET })}>
+                  Ethereum
+              </div>
+              <div onClick={() => switchToNetwork({ library, chainId: SupportedChainId.BINANCE })}>
+                  Binance
+              </div>
+            </div>
+          ) : (
+            <DisabledMenuItem>
+              <Trans>Change your network to go back to L1</Trans>
+            </DisabledMenuItem>
+          )}
+        </NetworkMenuFlyout>
+      )}
+    </NetworkWrapper>
+  )
 }
